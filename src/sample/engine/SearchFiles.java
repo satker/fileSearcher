@@ -14,13 +14,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import sample.Controller;
 
 public class SearchFiles extends Controller implements Runnable {
 
-  public SearchFiles(@NotNull String directory, String findText, @NotNull String findType) {
+  public SearchFiles(String directory, String findText, String findType) {
     this.directory = directory.trim()
                               .equals("") ? "C:\\" : directory;
     this.findText = findText;
@@ -78,12 +76,10 @@ public class SearchFiles extends Controller implements Runnable {
     return file.isFile() && fileForAdd != null && file.canRead();
   }
 
-  @NotNull
   private String getFullNameFile(String filePath, String fileName) {
     return filePath + "\\" + fileName;
   }
 
-  @Nullable
   private String getCorrectFile(File file) {
     String result = null;
     String fullNameFile = file.getAbsolutePath();

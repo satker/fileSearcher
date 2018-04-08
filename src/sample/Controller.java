@@ -23,7 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import org.jetbrains.annotations.NotNull;
 import sample.engine.Container;
 import sample.engine.SearchFiles;
 
@@ -94,7 +93,6 @@ public class Controller extends Container implements Initializable {
     textOutputFile.setText(getTextFromFile(chooseRes));
   }
 
-  @NotNull
   private String getTextFromFile(String str) {
     String result;
     try (Stream<String> stream = Files.lines(Paths.get(str), Charset.forName("ISO-8859-1"))) {
