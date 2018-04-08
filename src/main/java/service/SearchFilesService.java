@@ -51,23 +51,23 @@ public class SearchFilesService {
   }
 
   // Возвращает список директорий в папке
-  private List<String> currentDirectories(String filePath) {
+  private List<String> currentDirectories(String path) {
     List<String> result = new ArrayList<>();
     // Список файлов текущей директории
-    String[] currentFiles = new File(filePath).list();
+    String[] currentFiles = new File(path).list();
     if (currentFiles != null) {
       Arrays.stream(currentFiles)
-            .map(fileName -> getFullNameFile(filePath, fileName))
-            .forEach(fullNameFile -> {
-              File file = new File(fullNameFile);
-              String fileForAdd = getCorrectFile(file);
-              if (isaFile(file, fileForAdd)) {
-                MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
-                id++;
-              }
-              // Если каталог записываем в колекцию и продолжаем поиск
-              else {
-                result.add(fullNameFile);
+            .map(fileOrDirectoryName -> getFullNameOrDirectoryFile(path, fileOrDirectoryName))
+            .forEach(fullNameOrDirectoryFile -> {
+              File fileOrDirectory = new File(fullNameOrDirectoryFile);
+              if (isaFile(fileOrDirectory)) {
+                String fileForAdd = getCorrectFile(fileOrDirectory);
+                if (fileForAdd != null) {
+                  MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
+                  id++;
+                }
+              } else {
+                result.add(fullNameOrDirectoryFile);
               }
             });
     }
@@ -75,11 +75,11 @@ public class SearchFilesService {
   }
 
   // Если файл делаем сразу проверку
-  private boolean isaFile(File file, String fileForAdd) {
-    return file.isFile() && fileForAdd != null && file.canRead();
+  private boolean isaFile(File file) {
+    return file.isFile() && file.canRead();
   }
 
-  private String getFullNameFile(String filePath, String fileName) {
+  private String getFullNameOrDirectoryFile(String filePath, String fileName) {
     return filePath + "\\" + fileName;
   }
 
