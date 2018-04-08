@@ -8,12 +8,14 @@ public class SearchFilesController implements Runnable {
 
   public SearchFilesController(String directory, String findText, String findType) {
     searchFilesService = new SearchFilesService();
-    searchFilesService.setDirectory(directory.trim()
-                                             .equals("") ? "C:\\" : directory);
+    String directoryForAdd = directory.trim()
+                                      .equals("") ? "C:\\" : directory;
+    searchFilesService.setDirectory(directoryForAdd);
     searchFilesService.setFindText(findText);
     // если ничего не ввели выставляем по-умолчанию .log
-    searchFilesService.setFindType(findType.trim()
-                                           .equals("") ? "log" : findType);
+    String typeForAdd = findType.trim()
+                                .equals("") ? "log" : findType;
+    searchFilesService.setFindType(typeForAdd);
   }
 
   @Override

@@ -1,7 +1,7 @@
 package service;
 /*
      Модуль поиска (мозг программы)
- */
+*/
 
 import fxml_manager.MainWindowController;
 import java.io.File;
@@ -40,10 +40,10 @@ public class SearchFilesService {
     List<String> result = currentDirectories(directory);
     List<String> readyForAddingToResult = new ArrayList<>();
     while (!result.isEmpty()) {
-      // Параллельные стримы для перебора коллекции
-      result.parallelStream()
+      result.stream()
             .filter(Objects::nonNull)
-            .forEach(s -> readyForAddingToResult.addAll(currentDirectories(s)));
+            .forEach(currentDirectory ->
+                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
       result.clear();
       result.addAll(readyForAddingToResult);
       readyForAddingToResult.clear();
@@ -57,21 +57,24 @@ public class SearchFilesService {
     String[] currentFiles = new File(path).list();
     if (currentFiles != null) {
       Arrays.stream(currentFiles)
-            .map(fileOrDirectoryName -> getFullNameOrDirectoryFile(path, fileOrDirectoryName))
-            .forEach(fullNameOrDirectoryFile -> {
-              File fileOrDirectory = new File(fullNameOrDirectoryFile);
-              if (isaFile(fileOrDirectory)) {
-                String fileForAdd = getCorrectFile(fileOrDirectory);
-                if (fileForAdd != null) {
-                  MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
-                  id++;
-                }
-              } else {
-                result.add(fullNameOrDirectoryFile);
-              }
-            });
+            .map(fileOrDirectoryName ->
+                getFileFromFullNameFileOrDirectory(path, fileOrDirectoryName))
+            .forEach(currentFile ->
+                isaRequiredFileOrDirectory(result, currentFile));
     }
     return result;
+  }
+
+  private void isaRequiredFileOrDirectory(List<String> result, File currentFile) {
+    if (isaFile(currentFile)) {
+      String fileForAdd = getCorrectFile(currentFile);
+      if (fileForAdd != null) {
+        MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
+        id++;
+      }
+    } else {
+      result.add(currentFile.getAbsolutePath());
+    }
   }
 
   // Если файл делаем сразу проверку
@@ -79,8 +82,10 @@ public class SearchFilesService {
     return file.isFile() && file.canRead();
   }
 
-  private String getFullNameOrDirectoryFile(String filePath, String fileName) {
-    return filePath + "\\" + fileName;
+  private File getFileFromFullNameFileOrDirectory(String fileOrDirectoryPath,
+                                                  String fileOrDirectoryName) {
+    String fullNameFileOrDirectory = fileOrDirectoryPath + "\\" + fileOrDirectoryName;
+    return new File(fullNameFileOrDirectory);
   }
 
   private String getCorrectFile(File file) {
