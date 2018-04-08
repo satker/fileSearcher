@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="finder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/finder_jar</output-path>
+    <root id="archive" name="finder.jar">
+      <element id="module-output" name="finder" />
+    </root>
+  </artifact>
+</component>
