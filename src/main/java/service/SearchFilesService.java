@@ -1,8 +1,9 @@
-package sample.engine;
+package service;
 /*
      Модуль поиска (мозг программы)
  */
 
+import fxml_manager.MainWindowController;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -14,26 +15,28 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-import sample.Controller;
+import model.SearchFilesModel;
 
-public class SearchFiles extends Controller implements Runnable {
-
-  public SearchFiles(String directory, String findText, String findType) {
-    this.directory = directory.trim()
-                              .equals("") ? "C:\\" : directory;
-    this.findText = findText;
-    // если ничего не ввели выставляем по-умолчанию .log
-    this.findType = findType.trim()
-                            .equals("") ? "log" : findType;
-  }
+public class SearchFilesService {
 
   private String directory; // Искомая директория
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
 
-  @Override
-  public void run() {
+  public void setDirectory(String directory) {
+    this.directory = directory;
+  }
+
+  public void setFindText(String findText) {
+    this.findText = findText;
+  }
+
+  public void setFindType(String findType) {
+    this.findType = findType;
+  }
+
+  public void startSearching() {
     List<String> result = currentDirectories(directory);
     List<String> readyForAddingToResult = new ArrayList<>();
     while (!result.isEmpty()) {
@@ -59,7 +62,7 @@ public class SearchFiles extends Controller implements Runnable {
               File file = new File(fullNameFile);
               String fileForAdd = getCorrectFile(file);
               if (isaFile(file, fileForAdd)) {
-                resultFiles.add(new Container(id, fileForAdd));
+                MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
                 id++;
               }
               // Если каталог записываем в колекцию и продолжаем поиск
