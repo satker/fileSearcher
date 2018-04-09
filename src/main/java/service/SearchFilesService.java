@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import model.SearchFilesModel;
@@ -23,6 +27,9 @@ public class SearchFilesService {
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
+  private static final int processors = Runtime.getRuntime()
+                                               .availableProcessors();
+  private ExecutorService executorService = Executors.newFixedThreadPool(processors);
 
   public void setDirectory(String directory) {
     this.directory = directory;
@@ -40,10 +47,23 @@ public class SearchFilesService {
     List<String> result = currentDirectories(directory);
     List<String> readyForAddingToResult = new ArrayList<>();
     while (!result.isEmpty()) {
-      result.stream()
-            .filter(Objects::nonNull)
-            .forEach(currentDirectory ->
-                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
+      for (String currentDirectory : result) {
+        if (currentDirectory != null) {
+          Future<List<String>> listFuture = executorService.submit(
+              () -> currentDirectories(currentDirectory));
+          try {
+            readyForAddingToResult.addAll(listFuture.get());
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          } catch (ExecutionException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+//      result.stream()
+//            .filter(Objects::nonNull)
+//            .forEach(currentDirectory ->
+//                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
       result.clear();
       result.addAll(readyForAddingToResult);
       readyForAddingToResult.clear();
