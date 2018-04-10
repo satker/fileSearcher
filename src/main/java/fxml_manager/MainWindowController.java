@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -59,15 +60,16 @@ public class MainWindowController implements Initializable {
   private Label changeName;
 
   @FXML
-  private Label progressSearch;
+  private Button startSearch;
 
   @FXML
-  private Button startSearch;
+  private ProgressIndicator progressSearching;
 
   private String chooseRes;
 
   @FXML
   private void startFind() {
+    resultFiles.clear();
     SearchFilesController memFind = new SearchFilesController(innerFinder.getText(),
         whatFindText.getText(),
         whatFind.getText());
@@ -127,10 +129,10 @@ public class MainWindowController implements Initializable {
           e.printStackTrace();
         }
         if (SearchFilesService.searchIsAlive) {
-          if (!progressSearch.getText()
-                             .equals("Search start")) {
+          if (progressSearching.getProgress() != -1) {
             Platform.runLater(() -> {
-              progressSearch.setText("Search start");
+              progressSearching.setProgress(-1);
+              progressSearching.setVisible(true);
               innerFinder.setDisable(true);
               whatFind.setDisable(true);
               whatFindText.setDisable(true);
@@ -138,12 +140,10 @@ public class MainWindowController implements Initializable {
             });
           }
         } else {
-          if (!progressSearch.getText()
-                             .equals("Search end")
-              && !progressSearch.getText()
-                                .equals("")) {
+          if (progressSearching.getProgress() != 0) {
             Platform.runLater(() -> {
-              progressSearch.setText("Search end");
+              progressSearching.setVisible(false);
+              progressSearching.setProgress(0);
               innerFinder.setDisable(false);
               whatFind.setDisable(false);
               whatFindText.setDisable(false);

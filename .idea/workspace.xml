@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="237706dd-3125-464a-b6cc-c28cb359eb59" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/fileSearcher.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/SearchFilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/SearchFilesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main_window.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,10 +16,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SearchFilesService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchFilesService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/SearchFilesService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
+            <state relative-caret-position="-1511">
               <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -30,16 +28,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1362">
-              <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
+            <state relative-caret-position="114">
+              <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_window.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/main_window.fxml">
+          <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -85,9 +89,9 @@
         <option value="$PROJECT_DIR$/src/main/java/FXMLManager/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/fxmlManager/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/SearchFilesController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/main_window.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/service/SearchFilesService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/main_window.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" />
       </list>
     </option>
   </component>
@@ -209,17 +213,6 @@
             <path>
               <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
               <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
@@ -437,7 +430,7 @@
       <workItem from="1523302093741" duration="1223000" />
       <workItem from="1523303902045" duration="168000" />
       <workItem from="1523340487653" duration="3901000" />
-      <workItem from="1523375693900" duration="4976000" />
+      <workItem from="1523375693900" duration="7377000" />
     </task>
     <task id="LOCAL-00001" summary="refactored code">
       <created>1523183490713</created>
@@ -481,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523344228966</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add blocker button">
+      <created>1523382963738</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523382963738</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19024000" />
+    <option name="totallyTimeSpent" value="21425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -501,7 +501,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32980332" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38448846" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14356436" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -534,7 +534,8 @@
     <MESSAGE value="Refactored code in SearchFilesService" />
     <MESSAGE value="Added multithreading" />
     <MESSAGE value="Add progress listener" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add progress listener" />
+    <MESSAGE value="Add blocker button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add blocker button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -848,24 +849,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/main_window.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/SearchFilesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1362">
-          <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
+        <state relative-caret-position="-1511">
+          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/SearchFilesService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/main_window.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
+        <state relative-caret-position="114">
+          <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
