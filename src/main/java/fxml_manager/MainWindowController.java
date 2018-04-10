@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -60,6 +61,9 @@ public class MainWindowController implements Initializable {
   @FXML
   private Label progressSearch;
 
+  @FXML
+  private Button startSearch;
+
   private String chooseRes;
 
   @FXML
@@ -67,20 +71,8 @@ public class MainWindowController implements Initializable {
     SearchFilesController memFind = new SearchFilesController(innerFinder.getText(),
         whatFindText.getText(),
         whatFind.getText());
-
     Thread mainThread = new Thread(memFind);
     mainThread.start();
-
-    idFind.setCellValueFactory(new PropertyValueFactory<>("id"));
-    nameFile.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-    resultFinder.setItems(resultFiles);
-    resultFinder.setRowFactory(tv -> {
-      TableRow<SearchFilesModel> row = new TableRow<>();
-      row.setOnMouseClicked(event -> writeNameFileToLabelChangeName(row, event));
-      return row;
-    });
-
   }
 
   private void writeNameFileToLabelChangeName(TableRow<SearchFilesModel> row, MouseEvent event) {
@@ -108,38 +100,60 @@ public class MainWindowController implements Initializable {
                      .stream()
                      .map(a -> "\n" + a)
                      .reduce(String::concat)
-                     .toString();
+                     .orElse("");
     } catch (IOException e) {
-      result = "error_exception";
+      result = "Error to have access to file";
     }
     return result;
   }
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    Thread thread = new Thread(() -> {
+    textOutputFile.setEditable(false);
+    idFind.setCellValueFactory(new PropertyValueFactory<>("id"));
+    nameFile.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+    resultFinder.setItems(resultFiles);
+    resultFinder.setRowFactory(tv -> {
+      TableRow<SearchFilesModel> row = new TableRow<>();
+      row.setOnMouseClicked(event -> writeNameFileToLabelChangeName(row, event));
+      return row;
+    });
+    Thread listenerThread = new Thread(() -> {
       while (true) {
         try {
           TimeUnit.MILLISECONDS.sleep(500);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
-        if (SearchFilesService.SEARCH_IS_ALIVE) {
+        if (SearchFilesService.searchIsAlive) {
           if (!progressSearch.getText()
                              .equals("Search start")) {
-            Platform.runLater(() -> progressSearch.setText("Search start"));
+            Platform.runLater(() -> {
+              progressSearch.setText("Search start");
+              innerFinder.setDisable(true);
+              whatFind.setDisable(true);
+              whatFindText.setDisable(true);
+              startSearch.setDisable(true);
+            });
           }
         } else {
           if (!progressSearch.getText()
                              .equals("Search end")
               && !progressSearch.getText()
                                 .equals("")) {
-            Platform.runLater(() -> progressSearch.setText("Search end"));
+            Platform.runLater(() -> {
+              progressSearch.setText("Search end");
+              innerFinder.setDisable(false);
+              whatFind.setDisable(false);
+              whatFindText.setDisable(false);
+              startSearch.setDisable(false);
+            });
           }
         }
       }
     });
-    thread.setDaemon(true);
-    thread.start();
+    listenerThread.setDaemon(true);
+    listenerThread.start();
   }
 }

@@ -29,7 +29,7 @@ public class SearchFilesService {
   private static final int PROCESSORS = Runtime.getRuntime()
                                                .availableProcessors();
   private ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
-  public static volatile boolean SEARCH_IS_ALIVE = false;
+  public static volatile boolean searchIsAlive = false;
 
 
   public void setDirectory(String directory) {
@@ -47,7 +47,7 @@ public class SearchFilesService {
   public void startSearching() {
     List<String> result = currentDirectories(directory);
     List<String> readyForAddingToResult = new ArrayList<>();
-    SEARCH_IS_ALIVE = true;
+    searchIsAlive = true;
     while (!result.isEmpty()) {
       for (String currentDirectory : result) {
         if (currentDirectory != null) {
@@ -68,7 +68,7 @@ public class SearchFilesService {
       result.addAll(readyForAddingToResult);
       readyForAddingToResult.clear();
     }
-    SEARCH_IS_ALIVE = false;
+    searchIsAlive = false;
   }
 
   // Возвращает список директорий в папке
@@ -87,7 +87,7 @@ public class SearchFilesService {
   }
 
   private void isaRequiredFileOrDirectory(List<String> result, File currentFile) {
-    if (isaFile(currentFile)) {
+    if (currentFile.isFile()) {
       String fileForAdd = getCorrectFile(currentFile);
       if (fileForAdd != null) {
         MainWindowController.resultFiles.add(new SearchFilesModel(id, fileForAdd));
@@ -98,11 +98,6 @@ public class SearchFilesService {
     }
   }
 
-  // Если файл делаем сразу проверку
-  private boolean isaFile(File file) {
-    return file.isFile();
-  }
-
   private File getFileFromFullNameFileOrDirectory(String fileOrDirectoryPath,
                                                   String fileOrDirectoryName) {
     String fullNameFileOrDirectory = fileOrDirectoryPath + "\\" + fileOrDirectoryName;
@@ -110,12 +105,12 @@ public class SearchFilesService {
   }
 
   private String getCorrectFile(File file) {
-    String result = null;
+    String resultFullName = null;
     String fullNameFile = file.getAbsolutePath();
     if (isaGoodFileAtAll(fullNameFile, file)) {
-      result = fullNameFile;
+      resultFullName = fullNameFile;
     }
-    return result;
+    return resultFullName;
   }
 
   private boolean isaGoodFileAtAll(String fullNameFile, File file) {
