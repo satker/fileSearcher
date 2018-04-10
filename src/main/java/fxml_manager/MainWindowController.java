@@ -8,8 +8,10 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.SearchFilesModel;
+import service.SearchFilesService;
 
 public class MainWindowController implements Initializable {
 
@@ -53,6 +56,9 @@ public class MainWindowController implements Initializable {
 
   @FXML
   private Label changeName;
+
+  @FXML
+  private Label progressSearch;
 
   private String chooseRes;
 
@@ -111,6 +117,29 @@ public class MainWindowController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    System.out.println("Start");
+    Thread thread = new Thread(() -> {
+      while (true) {
+        try {
+          TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+        if (SearchFilesService.SEARCH_IS_ALIVE) {
+          if (!progressSearch.getText()
+                             .equals("Search start")) {
+            Platform.runLater(() -> progressSearch.setText("Search start"));
+          }
+        } else {
+          if (!progressSearch.getText()
+                             .equals("Search end")
+              && !progressSearch.getText()
+                                .equals("")) {
+            Platform.runLater(() -> progressSearch.setText("Search end"));
+          }
+        }
+      }
+    });
+    thread.setDaemon(true);
+    thread.start();
   }
 }

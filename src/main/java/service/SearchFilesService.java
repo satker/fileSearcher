@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,9 +26,11 @@ public class SearchFilesService {
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
-  private static final int processors = Runtime.getRuntime()
+  private static final int PROCESSORS = Runtime.getRuntime()
                                                .availableProcessors();
-  private ExecutorService executorService = Executors.newFixedThreadPool(processors);
+  private ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
+  public static volatile boolean SEARCH_IS_ALIVE = false;
+
 
   public void setDirectory(String directory) {
     this.directory = directory;
@@ -46,6 +47,7 @@ public class SearchFilesService {
   public void startSearching() {
     List<String> result = currentDirectories(directory);
     List<String> readyForAddingToResult = new ArrayList<>();
+    SEARCH_IS_ALIVE = true;
     while (!result.isEmpty()) {
       for (String currentDirectory : result) {
         if (currentDirectory != null) {
@@ -53,21 +55,20 @@ public class SearchFilesService {
               () -> currentDirectories(currentDirectory));
           try {
             readyForAddingToResult.addAll(listFuture.get());
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          } catch (ExecutionException e) {
+          } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
           }
         }
       }
-//      result.stream()
-//            .filter(Objects::nonNull)
-//            .forEach(currentDirectory ->
-//                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
+      //      result.stream()
+      //            .filter(Objects::nonNull)
+      //            .forEach(currentDirectory ->
+      //                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
       result.clear();
       result.addAll(readyForAddingToResult);
       readyForAddingToResult.clear();
     }
+    SEARCH_IS_ALIVE = false;
   }
 
   // Возвращает список директорий в папке
@@ -99,7 +100,7 @@ public class SearchFilesService {
 
   // Если файл делаем сразу проверку
   private boolean isaFile(File file) {
-    return file.isFile() && file.canRead();
+    return file.isFile();
   }
 
   private File getFileFromFullNameFileOrDirectory(String fileOrDirectoryPath,
