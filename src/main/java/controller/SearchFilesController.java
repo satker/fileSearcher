@@ -6,7 +6,8 @@ public class SearchFilesController implements Runnable {
 
   private SearchFilesService searchFilesService;
 
-  public SearchFilesController(String directory, String findText, String findType) {
+  public SearchFilesController(String directory, String findText, String findType,
+                               String chooseSearchType) {
     searchFilesService = new SearchFilesService();
     String directoryForAdd = directory.trim()
                                       .equals("") ? "C:\\" : directory;
@@ -16,6 +17,7 @@ public class SearchFilesController implements Runnable {
     String typeForAdd = findType.trim()
                                 .equals("") ? "log" : findType;
     searchFilesService.setFindType(typeForAdd);
+    searchFilesService.setChooseSearchType(chooseSearchType);
   }
 
   @Override

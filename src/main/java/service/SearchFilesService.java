@@ -5,10 +5,6 @@ package service;
 
 import fxml_manager.MainWindowController;
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +13,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 import model.SearchFilesModel;
 
 public class SearchFilesService {
@@ -26,9 +21,11 @@ public class SearchFilesService {
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
+  public static final ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
+
   private static final int PROCESSORS = Runtime.getRuntime()
                                                .availableProcessors();
-  private ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
+  private String chooseSearchType;
   public static volatile boolean searchIsAlive = false;
 
 
@@ -42,6 +39,10 @@ public class SearchFilesService {
 
   public void setFindType(String findType) {
     this.findType = findType;
+  }
+
+  public void setChooseSearchType(String chooseSearchType) {
+    this.chooseSearchType = chooseSearchType;
   }
 
   public void startSearching() {
@@ -60,10 +61,6 @@ public class SearchFilesService {
           }
         }
       }
-      //      result.stream()
-      //            .filter(Objects::nonNull)
-      //            .forEach(currentDirectory ->
-      //                readyForAddingToResult.addAll(currentDirectories(currentDirectory)));
       result.clear();
       result.addAll(readyForAddingToResult);
       readyForAddingToResult.clear();
@@ -115,7 +112,7 @@ public class SearchFilesService {
 
   private boolean isaGoodFileAtAll(String fullNameFile, File file) {
     return file.canRead() && isFileTypeGood(findType, file.getName()) &&
-        (findText.equals("") || isFileContainCurrentText(fullNameFile, findText));
+        (findText.equals("") || isFileContainCurrentText(file));
   }
 
   // Проверка расширения
@@ -126,13 +123,12 @@ public class SearchFilesService {
   }
 
   // Проверка наличия искомого текста в файле
-  private boolean isFileContainCurrentText(String fileName, String findText) {
-    boolean result = false;
-    try (Stream<String> stream = Files.lines(Paths.get(fileName), Charset.forName("ISO-8859-1"))) {
-      result = stream.anyMatch(s -> s.contains(findText));
-    } catch (IOException e) {
-      e.printStackTrace();
+  private boolean isFileContainCurrentText(File file) {
+    boolean isFuzzy = chooseSearchType.equals("Fuzzy search") ? true : false;
+    try {
+      return new LuceneSearcherService().isaTextInFile(file, findText, isFuzzy);
+    } catch (Exception e) {
+      return false;
     }
-    return result;
   }
 }
