@@ -1,7 +1,6 @@
 package fxml_manager;
 
 import static java.nio.file.Files.readAllLines;
-import static service.SearchFilesService.executorService;
 
 import controller.SearchFilesController;
 import java.io.File;
@@ -114,7 +113,11 @@ public class MainWindowController implements Initializable {
 
     textOutputFile.setItems(textOpenFile);
 
-    primaryStage.setOnCloseRequest(event -> executorService.shutdown());
+    primaryStage.setOnCloseRequest(event -> {
+      if (mainThread != null && mainThread.isAlive()) {
+        mainThread.interrupt();
+      }
+    });
 
     createAndStartThreadListener();
   }
@@ -177,7 +180,7 @@ public class MainWindowController implements Initializable {
 
   private void enableAllElementsAfterSearch(int x) {
     Platform.runLater(() -> {
-      System.out.println(x);
+      System.out.println(x / 2);
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
       innerFinder.setDisable(false);

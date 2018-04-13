@@ -14,7 +14,7 @@ import org.apache.lucene.store.RAMDirectory;
  * Default Indexer that we will use in tutorial
  * Be default it will use RussianAnalyzer to analyze text
  */
-public class MessageIndexer {
+public class FileIndexer {
 
   private static final Analyzer analyzer = new RussianAnalyzer();
   public static Directory directory;

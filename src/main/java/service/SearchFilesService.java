@@ -8,10 +8,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.regex.Pattern;
 import model.SearchFilesModel;
 
@@ -21,9 +17,6 @@ public class SearchFilesService {
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
-  private static final int PROCESSORS = Runtime.getRuntime()
-                                               .availableProcessors();
-  public static final ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
 
   private String chooseSearchType;
   public static volatile boolean searchIsAlive = false;
@@ -52,13 +45,7 @@ public class SearchFilesService {
     while (!result.isEmpty()) {
       for (String currentDirectory : result) {
         if (currentDirectory != null) {
-          Future<List<String>> listFuture = executorService.submit(
-              () -> currentDirectories(currentDirectory));
-          try {
-            readyForAddingToResult.addAll(listFuture.get());
-          } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-          }
+          readyForAddingToResult.addAll(currentDirectories(currentDirectory));
         }
       }
       result.clear();

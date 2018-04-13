@@ -13,7 +13,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 
-public class BasicSearchExamples {
+public class Searcher {
 
   /**
    * Search in body using QueryParser
@@ -24,7 +24,7 @@ public class BasicSearchExamples {
   private static final QueryParser queryParser = new QueryParser("body", new RussianAnalyzer());
   private final IndexReader reader;
 
-  public BasicSearchExamples(IndexReader reader) {
+  public Searcher(IndexReader reader) {
     this.reader = reader;
   }
 
@@ -43,7 +43,6 @@ public class BasicSearchExamples {
     final Query query = new TermQuery(term);
     final TopDocs search = indexSearcher.search(query, limit);
     final ScoreDoc[] hits = search.scoreDocs;
-    showHits(hits);
   }
 
   public boolean searchInBody(final String toSearch, final int limit)
@@ -74,18 +73,6 @@ public class BasicSearchExamples {
     final Query query = new FuzzyQuery(term, maxEdits);
     final TopDocs search = indexSearcher.search(query, limit);
     final ScoreDoc[] hits = search.scoreDocs;
-    //    showHits(hits);
     return hits.length != 0 ? true : false;
-  }
-
-  private void showHits(final ScoreDoc[] hits) throws IOException {
-    for (ScoreDoc hit : hits) {
-      final String title = reader.document(hit.doc)
-                                 .get("title");
-      final String body = reader.document(hit.doc)
-                                .get("body");
-      System.out.println(
-          "\n \t Document Id = " + hit.doc + "\n \t title = " + title + "\n \t body = " + body);
-    }
   }
 }

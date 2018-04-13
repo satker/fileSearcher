@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
-import service.lucene.BasicSearchExamples;
-import service.lucene.MessageIndexer;
-import service.lucene.MessageToDocument;
+import service.lucene.FileIndexer;
+import service.lucene.FileToDocument;
+import service.lucene.Searcher;
 
 public class LuceneSearcherService {
 
   public boolean isaTextInFile(File file, String whatSearch, boolean isFuzzy)
       throws Exception {
-    MessageIndexer messageIndexer = new MessageIndexer();
+    FileIndexer fileIndexer = new FileIndexer();
 
     List<Document> documents = new ArrayList<>();
     List<String> lines = readAllLines(Paths.get(file.getAbsolutePath()),
@@ -25,16 +25,16 @@ public class LuceneSearcherService {
 
     int count = 1;
     for (String line : lines) {
-      documents.add(MessageToDocument.createWith(String.valueOf(count), line));
+      documents.add(FileToDocument.createWith(String.valueOf(count), line));
       count++;
     }
 
-    messageIndexer.index(false, documents);
+    fileIndexer.index(false, documents);
 
-    BasicSearchExamples basicSearchExamples = new BasicSearchExamples(
-        DirectoryReader.open(MessageIndexer.directory));
-    boolean result = isFuzzy ? basicSearchExamples.fuzzySearch(whatSearch, "body", 10)
-        : basicSearchExamples.searchInBody(whatSearch, 10);
+    Searcher searcher = new Searcher(
+        DirectoryReader.open(FileIndexer.directory));
+    boolean result = isFuzzy ? searcher.fuzzySearch(whatSearch, "body", 10)
+        : searcher.searchInBody(whatSearch, 10);
     return result;
   }
 
