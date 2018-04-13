@@ -51,9 +51,6 @@ public class BasicSearchExamples {
     IndexSearcher indexSearcher = new IndexSearcher(reader);
 
     final Query query = queryParser.parse(toSearch);
-    System.out.println("Type of query: " + query.getClass()
-                                                .getSimpleName());
-
     final TopDocs search = indexSearcher.search(query, limit);
     final ScoreDoc[] hits = search.scoreDocs;
     //showHits(hits);

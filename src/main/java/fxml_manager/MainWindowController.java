@@ -108,56 +108,82 @@ public class MainWindowController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    initializeSearchingResultRow();
+
+    initializeResultFinder();
+
+    textOutputFile.setItems(textOpenFile);
+
+    primaryStage.setOnCloseRequest(event -> executorService.shutdown());
+
+    createAndStartThreadListener();
+  }
+
+  private void initializeSearchingResultRow() {
     textOutputFile.setEditable(false);
     idFind.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameFile.setCellValueFactory(new PropertyValueFactory<>("name"));
+  }
 
+  private void initializeResultFinder() {
     resultFinder.setItems(resultFiles);
     resultFinder.setRowFactory(tv -> {
       TableRow<SearchFilesModel> row = new TableRow<>();
       row.setOnMouseClicked(event -> writeNameFileToLabelChangeName(row, event));
       return row;
     });
+  }
 
-    textOutputFile.setItems(textOpenFile);
-
-    primaryStage.setOnCloseRequest(event -> {
-      executorService.shutdown();
-    });
-
+  private void createAndStartThreadListener() {
     Thread listenerThread = new Thread(() -> {
+      final int[] count = {1};
       while (true) {
         try {
           TimeUnit.MILLISECONDS.sleep(500);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
-        if (SearchFilesService.searchIsAlive) {
-          if (progressSearching.getProgress() != -1) {
-            Platform.runLater(() -> {
-              progressSearching.setProgress(-1);
-              progressSearching.setVisible(true);
-              innerFinder.setDisable(true);
-              whatFind.setDisable(true);
-              whatFindText.setDisable(true);
-              startSearch.setDisable(true);
-            });
-          }
-        } else {
-          if (progressSearching.getProgress() != 0) {
-            Platform.runLater(() -> {
-              progressSearching.setVisible(false);
-              progressSearching.setProgress(0);
-              innerFinder.setDisable(false);
-              whatFind.setDisable(false);
-              whatFindText.setDisable(false);
-              startSearch.setDisable(false);
-            });
-          }
-        }
+        checkDisableOrEnableElements(count);
+        count[0]++;
       }
     });
     listenerThread.setDaemon(true);
     listenerThread.start();
+  }
+
+  private void checkDisableOrEnableElements(int[] count) {
+    if (SearchFilesService.searchIsAlive) {
+      if (progressSearching.getProgress() != -1) {
+        disableAllElementsBeforeSearching(count);
+      }
+    } else {
+      if (progressSearching.getProgress() != 0) {
+        enableAllElementsAfterSearch(count[0]);
+      }
+    }
+  }
+
+  private void disableAllElementsBeforeSearching(int[] count) {
+    Platform.runLater(() -> {
+      count[0] = 0;
+      progressSearching.setProgress(-1);
+      progressSearching.setVisible(true);
+      innerFinder.setDisable(true);
+      whatFind.setDisable(true);
+      whatFindText.setDisable(true);
+      startSearch.setDisable(true);
+    });
+  }
+
+  private void enableAllElementsAfterSearch(int x) {
+    Platform.runLater(() -> {
+      System.out.println(x);
+      progressSearching.setVisible(false);
+      progressSearching.setProgress(0);
+      innerFinder.setDisable(false);
+      whatFind.setDisable(false);
+      whatFindText.setDisable(false);
+      startSearch.setDisable(false);
+    });
   }
 }

@@ -21,10 +21,10 @@ public class SearchFilesService {
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
   private int id = 1; // ID результата
-  public static final ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
-
   private static final int PROCESSORS = Runtime.getRuntime()
                                                .availableProcessors();
+  public static final ExecutorService executorService = Executors.newFixedThreadPool(PROCESSORS);
+
   private String chooseSearchType;
   public static volatile boolean searchIsAlive = false;
 
