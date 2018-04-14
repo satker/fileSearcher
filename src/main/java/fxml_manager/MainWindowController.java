@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
@@ -34,6 +35,7 @@ import service.SearchFilesService;
 public class MainWindowController implements Initializable {
 
   public static volatile ObservableList<SearchFilesModel> resultFiles = FXCollections.observableArrayList();
+  private ObservableList<String> textOpenFile = FXCollections.observableArrayList();
   public static Stage primaryStage;
 
   @FXML
@@ -47,7 +49,6 @@ public class MainWindowController implements Initializable {
 
   @FXML
   private TextField innerFinder;
-  private ObservableList<String> textOpenFile = FXCollections.observableArrayList();
 
   @FXML
   private TextField whatFind;
@@ -63,18 +64,24 @@ public class MainWindowController implements Initializable {
 
   @FXML
   private ProgressIndicator progressSearching;
+
   @FXML
   private ListView textOutputFile;
 
-  private String chooseRes;
   @FXML
   private ChoiceBox chooseSearchType;
+
   private Thread mainThread;
+
+  private SearchFilesController memFind;
+
+  private String chooseRes;
 
   @FXML
   private void startFind() {
+    textOpenFile.clear();
     resultFiles.clear();
-    SearchFilesController memFind = new SearchFilesController(innerFinder.getText(),
+    memFind = new SearchFilesController(innerFinder.getText(),
         whatFindText.getText(),
         whatFind.getText(), (String) chooseSearchType.getValue());
     mainThread = new Thread(memFind);
@@ -99,9 +106,32 @@ public class MainWindowController implements Initializable {
 
   private void getTextFromFile(String str) {
     try {
-      textOpenFile.addAll(readAllLines(Paths.get(str), Charset.forName("ISO-8859-1")));
+      int[] searchedStrings = memFind.getSearchedFiles()
+                                     .get(str);
+      List<String> stringList = readAllLines(Paths.get(str), Charset.forName("ISO-8859-1"));
+      if (searchedStrings != null) {
+        enterTextToListViewIfTextPresent(searchedStrings, stringList);
+      } else {
+        textOpenFile.addAll(stringList);
+      }
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  private void enterTextToListViewIfTextPresent(int[] searchedStrings, List<String> stringList) {
+    mainLoop:
+    for (int i = 0; i < stringList.size(); i++) {
+      for (int j = 0; j < searchedStrings.length; j++) {
+        if (searchedStrings[j] != -1) {
+          if (searchedStrings[j] == i) {
+            textOpenFile.add("??????????????" + stringList.get(i) + "??????????????");
+            searchedStrings[j] = -1;
+            continue mainLoop;
+          }
+        }
+      }
+      textOpenFile.add(stringList.get(i));
     }
   }
 
@@ -180,7 +210,7 @@ public class MainWindowController implements Initializable {
 
   private void enableAllElementsAfterSearch(int x) {
     Platform.runLater(() -> {
-      System.out.println(x / 2);
+      System.out.println(x / 2 + " сек.");
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
       innerFinder.setDisable(false);

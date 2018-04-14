@@ -15,7 +15,7 @@ import service.lucene.Searcher;
 
 public class LuceneSearcherService {
 
-  public boolean isaTextInFile(File file, String whatSearch, boolean isFuzzy)
+  public static int[] isaTextInFile(File file, String whatSearch, boolean isFuzzy)
       throws Exception {
     FileIndexer fileIndexer = new FileIndexer();
 
@@ -23,7 +23,7 @@ public class LuceneSearcherService {
     List<String> lines = readAllLines(Paths.get(file.getAbsolutePath()),
         Charset.forName("ISO-8859-1"));
 
-    int count = 1;
+    int count = 0;
     for (String line : lines) {
       documents.add(FileToDocument.createWith(String.valueOf(count), line));
       count++;
@@ -31,10 +31,13 @@ public class LuceneSearcherService {
 
     fileIndexer.index(false, documents);
 
-    Searcher searcher = new Searcher(
-        DirectoryReader.open(FileIndexer.directory));
-    boolean result = isFuzzy ? searcher.fuzzySearch(whatSearch, "body", 10)
-        : searcher.searchInBody(whatSearch, 10);
+    Searcher.setReader(DirectoryReader.open(FileIndexer.directory));
+    int[] result;
+    if (isFuzzy) {
+      result = Searcher.fuzzySearch(whatSearch, "body", 10);
+    } else {
+      result = Searcher.searchInBody(whatSearch, 10);
+    }
     return result;
   }
 

@@ -7,7 +7,9 @@ import fxml_manager.MainWindowController;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import model.SearchFilesModel;
 
@@ -19,8 +21,14 @@ public class SearchFilesService {
   private int id = 1; // ID результата
 
   private String chooseSearchType;
+
+  private Map<String, int[]> searchedFiles = new HashMap<>();
+
   public static volatile boolean searchIsAlive = false;
 
+  public Map<String, int[]> getSearchedFiles() {
+    return searchedFiles;
+  }
 
   public void setDirectory(String directory) {
     this.directory = directory;
@@ -111,9 +119,12 @@ public class SearchFilesService {
 
   // Проверка наличия искомого текста в файле
   private boolean isFileContainCurrentText(File file) {
-    boolean isFuzzy = chooseSearchType.equals("Fuzzy search") ? true : false;
+    boolean isFuzzy = chooseSearchType.equals("Fuzzy search");
     try {
-      return new LuceneSearcherService().isaTextInFile(file, findText, isFuzzy);
+      int[] findIndexesWithSearchedSrtings = LuceneSearcherService.isaTextInFile(file, findText,
+          isFuzzy);
+      searchedFiles.put(file.getAbsolutePath(), findIndexesWithSearchedSrtings);
+      return findIndexesWithSearchedSrtings.length != 0;
     } catch (Exception e) {
       return false;
     }

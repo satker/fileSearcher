@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Map;
 import service.SearchFilesService;
 
 public class SearchFilesController implements Runnable {
@@ -18,6 +19,10 @@ public class SearchFilesController implements Runnable {
                                 .equals("") ? "log" : findType;
     searchFilesService.setFindType(typeForAdd);
     searchFilesService.setChooseSearchType(chooseSearchType);
+  }
+
+  public Map<String, int[]> getSearchedFiles() {
+    return searchFilesService.getSearchedFiles();
   }
 
   @Override
