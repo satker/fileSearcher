@@ -18,8 +18,9 @@ public class SearchFilesService {
   private String directory; // Искомая директория
   private String findText; // Искомый текст
   private String findType; // Искомое расширение
-  private int id = 1; // ID результата
+  private String findNameFile;
 
+  private int id = 1; // ID результата
   private String chooseSearchType;
 
   private Map<String, int[]> searchedFiles = new HashMap<>();
@@ -36,6 +37,10 @@ public class SearchFilesService {
 
   public void setFindText(String findText) {
     this.findText = findText;
+  }
+
+  public void setFindNameFile(String findNameFile) {
+    this.findNameFile = findNameFile;
   }
 
   public void setFindType(String findType) {
@@ -99,21 +104,27 @@ public class SearchFilesService {
   private String getCorrectFile(File file) {
     String resultFullName = null;
     String fullNameFile = file.getAbsolutePath();
-    if (isaGoodFileAtAll(fullNameFile, file)) {
+    if (isaGoodFileAtAll(file)) {
       resultFullName = fullNameFile;
     }
     return resultFullName;
   }
 
-  private boolean isaGoodFileAtAll(String fullNameFile, File file) {
-    return file.canRead() && isFileTypeGood(findType, file.getName()) &&
-        (findText.equals("") || isFileContainCurrentText(file));
+  private boolean isaGoodFileAtAll(File file) {
+    return file.canRead() && (findType.equals("") || isFileTypeGood(file.getName())) &&
+        (findText.equals("") || isFileContainCurrentText(file)) && (findNameFile.equals("")
+        || isFileNameGood(file.getName()));
+  }
+
+  private boolean isFileNameGood(String nameFile) {
+    String nameWithoutType = nameFile.split("\\.(?=[^\\.]+$)")[0];
+    return nameWithoutType.equals(findNameFile);
   }
 
   // Проверка расширения
-  private boolean isFileTypeGood(String what, String testString) {
-    return Pattern.compile(".+\\." + what + "$")
-                  .matcher(testString)
+  private boolean isFileTypeGood(String nameFile) {
+    return Pattern.compile(".+\\." + findType + "$")
+                  .matcher(nameFile)
                   .matches();
   }
 

@@ -51,7 +51,7 @@ public class MainWindowController implements Initializable {
   private TextField innerFinder;
 
   @FXML
-  private TextField whatFind;
+  private TextField findType;
 
   @FXML
   private TextField whatFindText;
@@ -71,6 +71,9 @@ public class MainWindowController implements Initializable {
   @FXML
   private ChoiceBox chooseSearchType;
 
+  @FXML
+  private TextField findNameFile;
+
   private Thread mainThread;
 
   private SearchFilesController memFind;
@@ -83,7 +86,9 @@ public class MainWindowController implements Initializable {
     resultFiles.clear();
     memFind = new SearchFilesController(innerFinder.getText(),
         whatFindText.getText(),
-        whatFind.getText(), (String) chooseSearchType.getValue());
+        findType.getText(),
+        (String) chooseSearchType.getValue(),
+        findNameFile.getText());
     mainThread = new Thread(memFind);
     mainThread.start();
   }
@@ -202,9 +207,11 @@ public class MainWindowController implements Initializable {
       progressSearching.setProgress(-1);
       progressSearching.setVisible(true);
       innerFinder.setDisable(true);
-      whatFind.setDisable(true);
+      findType.setDisable(true);
       whatFindText.setDisable(true);
       startSearch.setDisable(true);
+      chooseSearchType.setDisable(true);
+      findNameFile.setDisable(true);
     });
   }
 
@@ -214,9 +221,11 @@ public class MainWindowController implements Initializable {
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
       innerFinder.setDisable(false);
-      whatFind.setDisable(false);
+      findType.setDisable(false);
       whatFindText.setDisable(false);
       startSearch.setDisable(false);
+      chooseSearchType.setDisable(false);
+      findNameFile.setDisable(false);
     });
   }
 }
