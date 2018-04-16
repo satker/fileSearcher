@@ -49,12 +49,12 @@
   </ProgressIndicator>
   <ListView layoutX="370.0" layoutY="206.0" prefHeight="304.0" prefWidth="331.0"
     fx:id="textOutputFile"/>
-  <ChoiceBox layoutX="385.0" layoutY="69.0" prefHeight="25.0" prefWidth="130.0"
-    value="Обычный поиск" fx:id="chooseSearchType">
+  <ChoiceBox layoutX="385.0" layoutY="69.0" prefHeight="25.0" prefWidth="130.0" value="Обычный"
+    fx:id="chooseSearchType">
     <items>
       <FXCollections fx:factory="observableArrayList">
-        <String fx:value="Обычный поиск"/>
-        <String fx:value="Нечеткий поиск"/>
+        <String fx:value="Обычный"/>
+        <String fx:value="Нечеткий"/>
       </FXCollections>
     </items>
   </ChoiceBox>
@@ -62,4 +62,6 @@
     text="Введите название файла:"/>
   <TextField layoutX="188.0" layoutY="105.0" prefHeight="25.0" prefWidth="169.0" promptText="*"
     fx:id="findNameFile"/>
+  <Label layoutX="385.0" layoutY="41.0" prefHeight="17.0" prefWidth="130.0"
+    text="Выберите тип поиска:"/>
 </AnchorPane>
