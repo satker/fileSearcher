@@ -13,11 +13,11 @@ public class SearchFilesController implements Runnable {
     String directoryForAdd = directory.trim()
                                       .equals("") ? "C:\\" : directory;
     searchFilesService.setDirectory(directoryForAdd);
-    searchFilesService.setFindText(findText);
+    searchFilesService.setFindText(findText.equals("*") ? "" : findText.trim());
     // если ничего не ввели выставляем по-умолчанию .log
-    searchFilesService.setFindType(findType.trim());
+    searchFilesService.setFindType(findType.equals("*") ? "" : findType.trim());
     searchFilesService.setChooseSearchType(chooseSearchType);
-    searchFilesService.setFindNameFile(findNameFile.trim());
+    searchFilesService.setFindNameFile(findNameFile.equals("*") ? "" : findNameFile.trim());
   }
 
   public Map<String, int[]> getSearchedFiles() {
