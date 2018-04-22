@@ -1,4 +1,4 @@
-package model;
+package org.searcher.model;
 
 /*
 Найденные файлы по искомым условиям

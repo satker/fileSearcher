@@ -1,9 +1,8 @@
-package service;
+package org.searcher.service;
 /*
      Модуль поиска (мозг программы)
 */
 
-import fxml_manager.MainWindowController;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import model.SearchFilesModel;
+import org.searcher.fxml_manager.MainWindowController;
+import org.searcher.model.SearchFilesModel;
 
 public class SearchFilesService {
 

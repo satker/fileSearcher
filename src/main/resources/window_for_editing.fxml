@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+  xmlns="http://javafx.com/javafx/8.0.121"
+  fx:controller="org.searcher.fxml_manager.WindowForEditing">
+  <children>
+    <Button layoutX="94.0" layoutY="361.0" mnemonicParsing="false" onAction="#saveFile"
+      prefHeight="25.0" prefWidth="128.0" text="Сохранить"/>
+    <Button layoutX="355.0" layoutY="361.0" mnemonicParsing="false" onAction="#closeEditWindow"
+      prefHeight="25.0" prefWidth="146.0" text="Отмена"/>
+    <TextArea layoutX="22.0" layoutY="15.0" prefHeight="325.0" prefWidth="555.0"
+      fx:id="textForEdit"/>
+  </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package service.lucene;
+package org.searcher.service.lucene;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package service;
+package org.searcher.service;
 
 import static java.nio.file.Files.readAllLines;
 
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
-import service.lucene.FileIndexer;
-import service.lucene.FileToDocument;
-import service.lucene.Searcher;
+import org.searcher.service.lucene.FileIndexer;
+import org.searcher.service.lucene.FileToDocument;
+import org.searcher.service.lucene.Searcher;
 
 public class LuceneSearcherService {
 

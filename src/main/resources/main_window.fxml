@@ -12,10 +12,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="530.0" prefWidth="711.0"
-  xmlns="http://javafx.com/javafx/8.0.121" fx:controller="fxml_manager.MainWindowController">
-  <Button layoutX="541.0" layoutY="69.0" mnemonicParsing="false" onAction="#startFind"
-    prefHeight="25.0" prefWidth="102.0" text="Начать поиск" fx:id="startSearch"/>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="561.0" prefWidth="711.0"
+  xmlns="http://javafx.com/javafx/8.0.121"
+  fx:controller="org.searcher.fxml_manager.MainWindowController">
+  <Button layoutX="542.0" layoutY="37.0" mnemonicParsing="false" onAction="#startFind"
+    prefHeight="25.0" prefWidth="116.0" text="Начать поиск" fx:id="startSearch"/>
   <TextField layoutX="21.0" layoutY="37.0" promptText="C:\" fx:id="innerFinder"/>
   <Label layoutX="21.0" layoutY="180.0" prefHeight="17.0" prefWidth="130.0"
     text="Результаты поиска :"/>
@@ -64,4 +65,8 @@
     fx:id="findNameFile"/>
   <Label layoutX="385.0" layoutY="41.0" prefHeight="17.0" prefWidth="130.0"
     text="Выберите тип поиска:"/>
+  <Button layoutX="542.0" layoutY="89.0" mnemonicParsing="false" onAction="#stopSearchAction"
+    prefHeight="25.0" prefWidth="116.0" text="Остановить поиск" fx:id="stopSearch"/>
+  <Button layoutX="555.0" layoutY="522.0" mnemonicParsing="false" onAction="#editFileOpenWindow"
+    prefHeight="25.0" prefWidth="142.0" text="Редактировать" fx:id="editFile"/>
 </AnchorPane>

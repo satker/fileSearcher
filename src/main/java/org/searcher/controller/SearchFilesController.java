@@ -1,7 +1,7 @@
-package controller;
+package org.searcher.controller;
 
 import java.util.Map;
-import service.SearchFilesService;
+import org.searcher.service.SearchFilesService;
 
 public class SearchFilesController implements Runnable {
 

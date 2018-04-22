@@ -1,21 +1,24 @@
-package fxml_manager;
+package org.searcher.fxml_manager;
 
 import static java.nio.file.Files.readAllLines;
 
-import controller.SearchFilesController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -28,14 +31,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.SearchFilesModel;
-import service.SearchFilesService;
+import org.searcher.Main;
+import org.searcher.controller.SearchFilesController;
+import org.searcher.model.SearchFilesModel;
+import org.searcher.service.SearchFilesService;
 
 public class MainWindowController implements Initializable {
 
   public static volatile ObservableList<SearchFilesModel> resultFiles = FXCollections.observableArrayList();
-  private ObservableList<String> textOpenFile = FXCollections.observableArrayList();
+  public static final Map<String, StringBuilder> fileWithText = new HashMap<>();
   public static Stage primaryStage;
 
   @FXML
@@ -73,12 +80,21 @@ public class MainWindowController implements Initializable {
 
   @FXML
   private TextField findNameFile;
+  public static String currentFilePath;
+  private static ObservableList textOpenFile = FXCollections.observableArrayList();
 
   private Thread mainThread;
 
   private SearchFilesController memFind;
+  @FXML
+  private Button stopSearch;
+  @FXML
+  private Button editFile;
 
-  private String chooseRes;
+
+  public static void getWindow() {
+    primaryStage.show();
+  }
 
   @FXML
   private void startFind() {
@@ -93,55 +109,92 @@ public class MainWindowController implements Initializable {
     mainThread.start();
   }
 
+  @FXML
+  public void stopSearchAction() {
+    if (mainThread != null && mainThread.isAlive()) {
+      mainThread.stop();
+      SearchFilesService.searchIsAlive = false;
+    }
+  }
+
   private void writeNameFileToLabelChangeName(TableRow<SearchFilesModel> row, MouseEvent event) {
     if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
         && event.getClickCount() == 1) {
       SearchFilesModel clickedRow = row.getItem();
-      chooseRes = clickedRow.getName();
+      currentFilePath = clickedRow.getName();
       /////// Вывод имени
-      changeName.setText(new File(chooseRes).getName());
+      changeName.setText(new File(currentFilePath).getName());
     }
   }
 
   @FXML
   private void openFile() {
-    textOpenFile.clear();
-    getTextFromFile(chooseRes);
+    Platform.runLater(() -> {
+      textOpenFile.clear();
+      getTextFromFile(currentFilePath);
+    });
   }
 
-  private void getTextFromFile(String str) {
+  public void getTextFromFile(String str) {
     try {
       int[] searchedStrings = memFind.getSearchedFiles()
                                      .get(str);
-      List<String> stringList = readAllLines(Paths.get(str), Charset.forName("ISO-8859-1"));
+      List<String> linesCurrentFile = readAllLines(Paths.get(str), Charset.forName("ISO-8859-1"));
+      StringBuilder currentLines = new StringBuilder();
       if (searchedStrings != null) {
-        enterTextToListViewIfTextPresent(searchedStrings, stringList);
+        enterTextToListViewIfTextPresent(searchedStrings, linesCurrentFile, currentLines);
       } else {
-        textOpenFile.addAll(stringList);
+        for (String lineOfCurrentFile : linesCurrentFile) {
+          currentLines.append(lineOfCurrentFile)
+                      .append('\n');
+          textOpenFile.add(lineOfCurrentFile);
+        }
       }
+      fileWithText.put(str, currentLines);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  private void enterTextToListViewIfTextPresent(int[] searchedStrings, List<String> stringList) {
+  @FXML
+  public void editFileOpenWindow() throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(Main.resource);
+    AnchorPane rootLayout = loader.load();
+    Scene editFileScene = new Scene(rootLayout);
+    WindowForEditing.editWindow.editWindowStage.setTitle("Редактирование файла");
+    WindowForEditing.editWindow.editWindowStage.setScene(editFileScene);
+    WindowForEditing.editWindow.editWindowStage.show();
+  }
+
+  private void enterTextToListViewIfTextPresent(int[] searchedStrings,
+                                                List<String> linesCurrentFile,
+                                                StringBuilder currentLines) {
     mainLoop:
-    for (int i = 0; i < stringList.size(); i++) {
+    for (int i = 0; i < linesCurrentFile.size(); i++) {
+      String currentLine = linesCurrentFile.get(i);
+      currentLines.append(currentLine)
+                  .append('\n');
       for (int j = 0; j < searchedStrings.length; j++) {
         if (searchedStrings[j] != -1) {
           if (searchedStrings[j] == i) {
-            textOpenFile.add("??????????????" + stringList.get(i) + "??????????????");
+            Label label = new Label();
+            label.setText(currentLine);
+            label.setTextFill(Color.RED);
+            textOpenFile.add(label);
             searchedStrings[j] = -1;
             continue mainLoop;
           }
         }
       }
-      textOpenFile.add(stringList.get(i));
+      textOpenFile.add(currentLine);
     }
   }
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    stopSearch.setDisable(true);
+
     initializeSearchingResultRow();
 
     initializeResultFinder();
@@ -149,16 +202,14 @@ public class MainWindowController implements Initializable {
     textOutputFile.setItems(textOpenFile);
 
     primaryStage.setOnCloseRequest(event -> {
-      if (mainThread != null && mainThread.isAlive()) {
-        mainThread.interrupt();
-      }
+      stopSearchAction();
     });
 
     createAndStartThreadListener();
   }
 
   private void initializeSearchingResultRow() {
-    textOutputFile.setEditable(false);
+    textOutputFile.setEditable(true);
     idFind.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameFile.setCellValueFactory(new PropertyValueFactory<>("name"));
   }
@@ -167,7 +218,13 @@ public class MainWindowController implements Initializable {
     resultFinder.setItems(resultFiles);
     resultFinder.setRowFactory(tv -> {
       TableRow<SearchFilesModel> row = new TableRow<>();
-      row.setOnMouseClicked(event -> writeNameFileToLabelChangeName(row, event));
+      row.setOnMouseClicked(event -> {
+        if (event.getClickCount() == 2) {
+          openFile();
+        } else {
+          writeNameFileToLabelChangeName(row, event);
+        }
+      });
       return row;
     });
   }
@@ -182,6 +239,12 @@ public class MainWindowController implements Initializable {
           e.printStackTrace();
         }
         checkDisableOrEnableElements(count);
+        if (changeName.getText()
+                      .equals("")) {
+          editFile.setDisable(true);
+        } else {
+          editFile.setDisable(false);
+        }
         count[0]++;
       }
     });
@@ -204,6 +267,7 @@ public class MainWindowController implements Initializable {
   private void disableAllElementsBeforeSearching(int[] count) {
     Platform.runLater(() -> {
       count[0] = 0;
+      stopSearch.setDisable(false);
       progressSearching.setProgress(-1);
       progressSearching.setVisible(true);
       innerFinder.setDisable(true);
@@ -218,6 +282,7 @@ public class MainWindowController implements Initializable {
   private void enableAllElementsAfterSearch(int x) {
     Platform.runLater(() -> {
       System.out.println(x / 2 + " сек.");
+      stopSearch.setDisable(true);
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
       innerFinder.setDisable(false);
