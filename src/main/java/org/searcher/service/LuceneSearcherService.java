@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
+import org.searcher.fxml_manager.MainWindowController;
 import org.searcher.service.lucene.FileIndexer;
 import org.searcher.service.lucene.FileToDocument;
 import org.searcher.service.lucene.Searcher;
@@ -37,6 +38,9 @@ public class LuceneSearcherService {
       result = Searcher.fuzzySearch(whatSearch, "body", 10);
     } else {
       result = Searcher.searchInBody(whatSearch, 10);
+    }
+    if (result.length != 0) {
+      MainWindowController.fileAndLines.put(file.getAbsolutePath(), lines);
     }
     return result;
   }

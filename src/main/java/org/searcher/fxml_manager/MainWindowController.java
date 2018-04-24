@@ -42,7 +42,8 @@ import org.searcher.service.SearchFilesService;
 public class MainWindowController implements Initializable {
 
   public static volatile ObservableList<SearchFilesModel> resultFiles = FXCollections.observableArrayList();
-  public static final Map<String, StringBuilder> fileWithText = new HashMap<>();
+  //public static final Map<String, StringBuilder> fileWithText = new HashMap<>();
+  public static final Map<String, List<String>> fileAndLines = new HashMap<>();
   public static Stage primaryStage;
 
   @FXML
@@ -139,7 +140,12 @@ public class MainWindowController implements Initializable {
     try {
       int[] searchedStrings = memFind.getSearchedFiles()
                                      .get(str);
-      List<String> linesCurrentFile = readAllLines(Paths.get(str), Charset.forName("ISO-8859-1"));
+      List<String> linesCurrentFile;
+      if (fileAndLines.containsKey(str)) {
+        linesCurrentFile = fileAndLines.get(str);
+      } else {
+        linesCurrentFile = readAllLines(Paths.get(str), Charset.forName("ISO-8859-1"));
+      }
       StringBuilder currentLines = new StringBuilder();
       if (searchedStrings != null) {
         enterTextToListViewIfTextPresent(searchedStrings, linesCurrentFile, currentLines);
@@ -150,7 +156,7 @@ public class MainWindowController implements Initializable {
           textOpenFile.add(lineOfCurrentFile);
         }
       }
-      fileWithText.put(str, currentLines);
+      fileAndLines.put(str, linesCurrentFile);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -162,9 +168,10 @@ public class MainWindowController implements Initializable {
     loader.setLocation(Main.resource);
     AnchorPane rootLayout = loader.load();
     Scene editFileScene = new Scene(rootLayout);
-    WindowForEditing.editWindow.editWindowStage.setTitle("Редактирование файла");
-    WindowForEditing.editWindow.editWindowStage.setScene(editFileScene);
-    WindowForEditing.editWindow.editWindowStage.show();
+    WindowForEditing editWindow = new WindowForEditing();
+    editWindow.editWindowStage.setTitle("Редактирование файла");
+    editWindow.editWindowStage.setScene(editFileScene);
+    editWindow.editWindowStage.show();
   }
 
   private void enterTextToListViewIfTextPresent(int[] searchedStrings,

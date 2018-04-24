@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class WindowForEditing implements Initializable {
 
   public static final WindowForEditing editWindow = new WindowForEditing();
   public static final Stage editWindowStage = new Stage();
+  public static List<String> linesCurrentFile = new ArrayList<>();
+  public String filePath;
 
   static {
     editWindowStage.initModality(Modality.APPLICATION_MODAL);
@@ -29,6 +32,10 @@ public class WindowForEditing implements Initializable {
 
   @FXML
   public void saveFile() {
+    MainWindowController.fileAndLines.get(filePath)
+                                     .clear();
+    MainWindowController.fileAndLines.get(filePath)
+                                     .add(textForEdit.getText());
     try (FileWriter fw = new FileWriter(MainWindowController.currentFilePath, false)) {
       fw.write(textForEdit.getText());
     } catch (IOException e) {
@@ -39,38 +46,38 @@ public class WindowForEditing implements Initializable {
 
   @FXML
   public void closeEditWindow() {
+    MainWindowController.fileAndLines.put(filePath, linesCurrentFile);
     editWindowStage.close();
     MainWindowController.getWindow();
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    StringBuilder textFile = new StringBuilder();
+    filePath = MainWindowController.currentFilePath;
     boolean textPresentInFile = false;
-    for (String key : MainWindowController.fileWithText.keySet()) {
-      if (key.equals(MainWindowController.currentFilePath)) {
-        textFile = MainWindowController.fileWithText.get(key);
+    for (String key : MainWindowController.fileAndLines.keySet()) {
+      if (key.equals(filePath)) {
+        linesCurrentFile = MainWindowController.fileAndLines.get(key);
         textPresentInFile = true;
         break;
       }
     }
     if (!textPresentInFile) {
       try {
-        getTextFromFile(textFile);
+        if (MainWindowController.fileAndLines.containsKey(filePath)) {
+          linesCurrentFile = MainWindowController.fileAndLines.get(
+              filePath);
+        } else {
+          linesCurrentFile = readAllLines(Paths.get(filePath),
+              Charset.forName("ISO-8859-1"));
+        }
       } catch (IOException e) {
         e.printStackTrace();
       }
 
     }
-    textForEdit.setText(textFile.toString());
-  }
-
-  private void getTextFromFile(StringBuilder textFile) throws IOException {
-    List<String> linesCurrentFile = readAllLines(Paths.get(MainWindowController.currentFilePath),
-        Charset.forName("ISO-8859-1"));
     for (String line : linesCurrentFile) {
-      textFile.append(line)
-              .append('\n');
+      textForEdit.appendText(line + "\n");
     }
   }
 }
