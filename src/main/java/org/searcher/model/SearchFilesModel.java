@@ -5,23 +5,22 @@ package org.searcher.model;
  */
 public class SearchFilesModel {
 
-  private volatile String name;
+    private volatile String name;
+    private volatile int id;
 
-  public String getName() {
-    return name;
-  }
+    public SearchFilesModel(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-  private volatile int id;
+    public SearchFilesModel() {
+    }
 
-  public int getId() {
-    return id;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public SearchFilesModel(int id, String name) {
-    this.id = id;
-    this.name = name;
-  }
-
-  public SearchFilesModel() {
-  }
+    public int getId() {
+        return id;
+    }
 }

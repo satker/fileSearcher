@@ -1,12 +1,5 @@
 package org.searcher.service;
 
-import static java.nio.file.Files.readAllLines;
-
-import java.io.File;
-import java.nio.charset.Charset;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.searcher.fxml_manager.MainWindowController;
@@ -14,9 +7,17 @@ import org.searcher.service.lucene.FileIndexer;
 import org.searcher.service.lucene.FileToDocument;
 import org.searcher.service.lucene.Searcher;
 
-public class LuceneSearcherService {
+import java.io.File;
+import java.nio.charset.Charset;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
-  public static int[] isaTextInFile(File file, String whatSearch, boolean isFuzzy)
+import static java.nio.file.Files.readAllLines;
+
+class LuceneSearcherService {
+
+  static int[] isaTextInFile(File file, String whatSearch, boolean isFuzzy)
       throws Exception {
     FileIndexer fileIndexer = new FileIndexer();
 

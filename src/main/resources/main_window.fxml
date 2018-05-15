@@ -1,72 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="561.0" prefWidth="711.0"
-  xmlns="http://javafx.com/javafx/8.0.121"
-  fx:controller="org.searcher.fxml_manager.MainWindowController">
-  <Button layoutX="542.0" layoutY="37.0" mnemonicParsing="false" onAction="#startFind"
-    prefHeight="25.0" prefWidth="116.0" text="Начать поиск" fx:id="startSearch"/>
-  <TextField layoutX="21.0" layoutY="37.0" promptText="C:\" fx:id="innerFinder"/>
-  <Label layoutX="21.0" layoutY="180.0" prefHeight="17.0" prefWidth="130.0"
-    text="Результаты поиска :"/>
-  <TableView layoutX="14.0" layoutY="206.0" prefHeight="304.0" prefWidth="339.0"
-    fx:id="resultFinder">
-    <columns>
-      <TableColumn prefWidth="33.0" text="№" fx:id="idFind"/>
-      <TableColumn prefWidth="627.0000076293945" text="Name" fx:id="nameFile"/>
-    </columns>
-  </TableView>
-  <Label layoutX="27.0" layoutY="14.0" prefHeight="17.0" prefWidth="156.0"
-    text="Введите директорию:"/>
-  <Label layoutX="197.0" layoutY="14.0" prefHeight="17.0" prefWidth="156.0"
-    text="Введите расширение файла:"/>
-  <TextField layoutX="188.0" layoutY="36.0" prefHeight="25.0" prefWidth="169.0"
-    promptText="(Пример расширения: log)" fx:id="findType"/>
-  <Label layoutX="21.0" layoutY="143.0" prefHeight="17.0" prefWidth="102.0" text="Название файла:"/>
-  <Label layoutX="141.0" layoutY="139.0" prefHeight="25.0" prefWidth="331.0" fx:id="changeName"/>
-  <Button layoutX="490.0" layoutY="139.0" mnemonicParsing="false" onAction="#openFile"
-    prefHeight="25.0" prefWidth="102.0" text="Открыть файл" fx:id="openFile"/>
-  <Label layoutX="25.0" layoutY="81.0" text="Введите текст для поиска:"/>
-  <TextField layoutX="21.0" layoutY="105.0" promptText="*" fx:id="whatFindText"/>
-  <Label layoutX="372.0" layoutY="180.0" prefHeight="17.0" prefWidth="169.0"
-    text="Текст в файле :"/>
-  <ProgressIndicator cache="true" cacheHint="ROTATE" depthTest="ENABLE" disable="true"
-    layoutX="555.0" layoutY="48.0" prefHeight="69.0" prefWidth="76.0" progress="0.0" visible="false"
-    fx:id="progressSearching">
-    <effect>
-      <Blend opacity="0.0"/>
-    </effect>
-  </ProgressIndicator>
-  <ListView layoutX="370.0" layoutY="206.0" prefHeight="304.0" prefWidth="331.0"
-    fx:id="textOutputFile"/>
-  <ChoiceBox layoutX="385.0" layoutY="69.0" prefHeight="25.0" prefWidth="130.0" value="Обычный"
-    fx:id="chooseSearchType">
-    <items>
-      <FXCollections fx:factory="observableArrayList">
-        <String fx:value="Обычный"/>
-        <String fx:value="Нечеткий"/>
-      </FXCollections>
-    </items>
-  </ChoiceBox>
-  <Label layoutX="197.0" layoutY="85.0" prefHeight="17.0" prefWidth="156.0"
-    text="Введите название файла:"/>
-  <TextField layoutX="188.0" layoutY="105.0" prefHeight="25.0" prefWidth="169.0" promptText="*"
-    fx:id="findNameFile"/>
-  <Label layoutX="385.0" layoutY="41.0" prefHeight="17.0" prefWidth="130.0"
-    text="Выберите тип поиска:"/>
-  <Button layoutX="542.0" layoutY="89.0" mnemonicParsing="false" onAction="#stopSearchAction"
-    prefHeight="25.0" prefWidth="116.0" text="Остановить поиск" fx:id="stopSearch"/>
-  <Button layoutX="555.0" layoutY="522.0" mnemonicParsing="false" onAction="#editFileOpenWindow"
-    prefHeight="25.0" prefWidth="142.0" text="Редактировать" fx:id="editFile"/>
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="org.searcher.fxml_manager.MainWindowController">
+    <Button fx:id="startSearch" layoutX="542.0" layoutY="37.0" mnemonicParsing="false" onAction="#startFind"
+            prefHeight="25.0" prefWidth="116.0" text="Начать поиск"/>
+    <TextField fx:id="innerFinder" layoutX="21.0" layoutY="37.0" promptText="C:\"/>
+    <Label layoutX="21.0" layoutY="180.0" prefHeight="17.0" prefWidth="130.0" text="Результаты поиска :"/>
+    <TableView fx:id="resultFinder" layoutX="14.0" layoutY="206.0" prefHeight="304.0" prefWidth="339.0">
+        <columns>
+            <TableColumn fx:id="idFind" prefWidth="33.0" text="№"/>
+            <TableColumn fx:id="nameFile" prefWidth="627.0000076293945" text="Name"/>
+        </columns>
+    </TableView>
+    <Label layoutX="27.0" layoutY="14.0" prefHeight="17.0" prefWidth="156.0" text="Введите директорию:"/>
+    <Label layoutX="197.0" layoutY="14.0" prefHeight="17.0" prefWidth="156.0" text="Введите расширение файла:"/>
+    <Label layoutX="21.0" layoutY="143.0" prefHeight="17.0" prefWidth="102.0" text="Название файла:"/>
+    <Label fx:id="changeName" layoutX="141.0" layoutY="139.0" prefHeight="25.0" prefWidth="331.0"/>
+    <Button fx:id="openFile" layoutX="490.0" layoutY="139.0" mnemonicParsing="false" onAction="#openFile"
+            prefHeight="25.0" prefWidth="102.0" text="Открыть файл"/>
+    <Label layoutX="25.0" layoutY="81.0" text="Введите текст для поиска:"/>
+    <TextField fx:id="whatFindText" layoutX="21.0" layoutY="105.0" promptText="*"/>
+    <Label layoutX="372.0" layoutY="180.0" prefHeight="17.0" prefWidth="169.0" text="Текст в файле :"/>
+    <ProgressIndicator fx:id="progressSearching" cache="true" cacheHint="ROTATE" depthTest="ENABLE" disable="true"
+                       layoutX="555.0" layoutY="48.0" prefHeight="69.0" prefWidth="76.0" progress="0.0" visible="false">
+        <effect>
+            <Blend opacity="0.0"/>
+        </effect>
+    </ProgressIndicator>
+    <ListView fx:id="textOutputFile" layoutX="370.0" layoutY="206.0" prefHeight="304.0" prefWidth="331.0"/>
+    <ChoiceBox fx:id="chooseSearchType" layoutX="385.0" layoutY="69.0" prefHeight="25.0" prefWidth="130.0"
+               value="Обычный">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Обычный"/>
+                <String fx:value="Нечеткий"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
+    <Label layoutX="197.0" layoutY="85.0" prefHeight="17.0" prefWidth="156.0" text="Введите название файла:"/>
+    <TextField fx:id="findNameFile" layoutX="188.0" layoutY="105.0" prefHeight="25.0" prefWidth="169.0" promptText="*"/>
+    <Label layoutX="385.0" layoutY="41.0" prefHeight="17.0" prefWidth="130.0" text="Выберите тип поиска:"/>
+    <Button fx:id="stopSearch" layoutX="542.0" layoutY="89.0" mnemonicParsing="false" onAction="#stopSearchAction"
+            prefHeight="25.0" prefWidth="116.0" text="Остановить поиск"/>
+    <Button fx:id="editFile" layoutX="555.0" layoutY="522.0" mnemonicParsing="false" onAction="#editFileOpenWindow"
+            prefHeight="25.0" prefWidth="142.0" text="Редактировать"/>
+    <ChoiceBox fx:id="findType" layoutX="185.0" layoutY="37.0" prefHeight="25.0" prefWidth="169.0" value="">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value=""/>
+                <String fx:value="log"/>
+                <String fx:value="doc"/>
+                <String fx:value="docx"/>
+                <String fx:value="docm"/>
+                <String fx:value="dot"/>
+                <String fx:value="dotx"/>
+                <String fx:value="abw"/>
+                <String fx:value="acl"/>
+                <String fx:value="afp"/>
+                <String fx:value="ami"/>
+                <String fx:value="ans"/>
+                <String fx:value="asc"/>
+                <String fx:value="aww"/>
+                <String fx:value="ccf"/>
+                <String fx:value="csv"/>
+                <String fx:value="cwk"/>
+                <String fx:value="dbk"/>
+                <String fx:value="dita"/>
+                <String fx:value="egt"/>
+                <String fx:value="epub"/>
+                <String fx:value="ezw"/>
+                <String fx:value="fdx"/>
+                <String fx:value="ftm"/>
+                <String fx:value="ftx"/>
+                <String fx:value="gdoc"/>
+                <String fx:value="html"/>
+                <String fx:value="hwp"/>
+                <String fx:value="hwpml"/>
+                <String fx:value="lwp"/>
+                <String fx:value="mbp"/>
+                <String fx:value="md"/>
+                <String fx:value="me"/>
+                <String fx:value="mcw"/>
+                <String fx:value="nb"/>
+                <String fx:value="nbp"/>
+                <String fx:value="neis"/>
+                <String fx:value="odm"/>
+                <String fx:value="odoc"/>
+                <String fx:value="odt"/>
+                <String fx:value="osheet"/>
+                <String fx:value="ott"/>
+                <String fx:value="omm"/>
+                <String fx:value="pages"/>
+                <String fx:value="pap"/>
+                <String fx:value="pdax"/>
+                <String fx:value="pdf"/>
+                <String fx:value="quox"/>
+                <String fx:value="rtf"/>
+                <String fx:value="quox"/>
+                <String fx:value="rpt"/>
+                <String fx:value="sdw"/>
+                <String fx:value="se"/>
+                <String fx:value="stw"/>
+                <String fx:value="sxw"/>
+                <String fx:value="tex"/>
+                <String fx:value="info"/>
+                <String fx:value="troff"/>
+                <String fx:value="txt"/>
+                <String fx:value="uof"/>
+                <String fx:value="uoml"/>
+                <String fx:value="via"/>
+                <String fx:value="wpd"/>
+                <String fx:value="wps"/>
+                <String fx:value="wpt"/>
+                <String fx:value="wrd"/>
+                <String fx:value="wrf"/>
+                <String fx:value="wri"/>
+                <String fx:value="xhtml"/>
+                <String fx:value="xml"/>
+                <String fx:value="xps"/>
+                <String fx:value="1st"/>
+            </FXCollections>
+        </items>
+    </ChoiceBox>
 </AnchorPane>

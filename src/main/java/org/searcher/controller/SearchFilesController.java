@@ -1,31 +1,32 @@
 package org.searcher.controller;
 
-import java.util.Map;
 import org.searcher.service.SearchFilesService;
+
+import java.util.Map;
 
 public class SearchFilesController implements Runnable {
 
-  private SearchFilesService searchFilesService;
+    private SearchFilesService searchFilesService;
 
-  public SearchFilesController(String directory, String findText, String findType,
-                               String chooseSearchType, String findNameFile) {
-    searchFilesService = new SearchFilesService();
-    String directoryForAdd = directory.trim()
-                                      .equals("") ? "C:\\" : directory;
-    searchFilesService.setDirectory(directoryForAdd);
-    searchFilesService.setFindText(findText.equals("*") ? "" : findText.trim());
-    // если ничего не ввели выставляем по-умолчанию .log
-    searchFilesService.setFindType(findType.equals("*") ? "" : findType.trim());
-    searchFilesService.setChooseSearchType(chooseSearchType);
-    searchFilesService.setFindNameFile(findNameFile.equals("*") ? "" : findNameFile.trim());
-  }
+    public SearchFilesController(String directory, String findText, String findType,
+                                 String chooseSearchType, String findNameFile) {
+        searchFilesService = new SearchFilesService();
+        String directoryForAdd = directory.trim()
+                .equals("") ? "C:\\" : directory;
+        searchFilesService.setDirectory(directoryForAdd);
+        searchFilesService.setFindText(findText.equals("*") ? "" : findText.trim());
+        // если ничего не ввели выставляем по-умолчанию .log
+        searchFilesService.setFindType(findType.equals("") ? "" : findType.trim());
+        searchFilesService.setChooseSearchType(chooseSearchType);
+        searchFilesService.setFindNameFile(findNameFile.equals("*") ? "" : findNameFile.trim());
+    }
 
-  public Map<String, int[]> getSearchedFiles() {
-    return searchFilesService.getSearchedFiles();
-  }
+    public Map<String, int[]> getSearchedFiles() {
+        return searchFilesService.getSearchedFiles();
+    }
 
-  @Override
-  public void run() {
-    searchFilesService.startSearching();
-  }
+    @Override
+    public void run() {
+        searchFilesService.startSearching();
+    }
 }
