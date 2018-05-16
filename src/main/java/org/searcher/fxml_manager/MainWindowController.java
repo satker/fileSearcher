@@ -169,6 +169,27 @@ public class MainWindowController implements Initializable {
     }
   }
 
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    innerFinder.setDisable(true);
+
+    TextFields.bindAutoCompletion(findType, textTypes);
+
+    stopSearch.setDisable(true);
+
+    initializeSearchingResultRow();
+
+    initializeResultFinder();
+
+    textOutputFile.setItems(textOpenFile);
+
+    primaryStage.setOnCloseRequest(event -> {
+      stopSearchAction();
+    });
+
+    createAndStartThreadListener();
+  }
+
   private void writeNameFileToLabelChangeName(TableRow<SearchFilesModel> row, MouseEvent event) {
     if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
         && event.getClickCount() == 1) {
@@ -227,25 +248,6 @@ public class MainWindowController implements Initializable {
       }
       textOpenFile.add(currentLine);
     }
-  }
-
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    TextFields.bindAutoCompletion(findType, textTypes);
-
-    stopSearch.setDisable(true);
-
-    initializeSearchingResultRow();
-
-    initializeResultFinder();
-
-    textOutputFile.setItems(textOpenFile);
-
-    primaryStage.setOnCloseRequest(event -> {
-      stopSearchAction();
-    });
-
-    createAndStartThreadListener();
   }
 
   private void initializeSearchingResultRow() {
@@ -320,7 +322,7 @@ public class MainWindowController implements Initializable {
       stopSearch.setDisable(false);
       progressSearching.setProgress(-1);
       progressSearching.setVisible(true);
-      innerFinder.setDisable(true);
+      //innerFinder.setDisable(true);
       findType.setDisable(true);
       whatFindText.setDisable(true);
       startSearch.setDisable(true);
@@ -335,7 +337,7 @@ public class MainWindowController implements Initializable {
       stopSearch.setDisable(true);
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
-      innerFinder.setDisable(false);
+      //innerFinder.setDisable(false);
       findType.setDisable(false);
       whatFindText.setDisable(false);
       startSearch.setDisable(false);

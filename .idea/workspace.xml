@@ -6,13 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="237706dd-3125-464a-b6cc-c28cb359eb59" name="Default" comment="add editor for files and fixe bugs">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_controlsfx_controlsfx_8_40_14.xml" afterDir="false" />
+    <list default="true" id="237706dd-3125-464a-b6cc-c28cb359eb59" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fileSearcher.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileSearcher.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/main_window.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main_window.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="179" column="3" selection-start-line="179" selection-start-column="3" selection-end-line="179" selection-end-column="3" />
+            <state relative-caret-position="177">
+              <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,25 +41,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="108" selection-start-line="2" selection-start-column="108" selection-end-line="2" selection-end-column="108" />
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_window.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/main_window.fxml">
-          <provider editor-type-id="text-editor" />
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="221">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#514#515#0" expanded="true" />
@@ -76,8 +66,8 @@
       <file leaf-file-name="SearchFilesService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="118" column="70" selection-start-line="118" selection-start-column="70" selection-end-line="118" selection-end-column="70" />
+            <state relative-caret-position="1819">
+              <caret line="125" column="70" selection-start-line="125" selection-start-column="70" selection-end-line="125" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -152,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/main/java/fxml_manager/WindowForEditing.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/service/LuceneSearcherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java" />
@@ -161,6 +150,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/modena.css" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/main_window.fxml" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java" />
       </list>
     </option>
@@ -191,35 +181,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
               <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -305,8 +272,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,7 +495,8 @@
       <workItem from="1524504351935" duration="53000" />
       <workItem from="1526441445933" duration="596000" />
       <workItem from="1526442157885" duration="3814000" />
-      <workItem from="1526457655427" duration="2356000" />
+      <workItem from="1526457655427" duration="2650000" />
+      <workItem from="1526466308510" duration="752000" />
     </task>
     <task id="LOCAL-00001" summary="refactored code">
       <created>1523183490713</created>
@@ -642,14 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524397666448</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add choose type and choose directory">
+      <created>1526460293112</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1526460293112</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110970000" />
+    <option name="totallyTimeSpent" value="112016000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="251" y="21" width="797" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -660,12 +635,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.3296119" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33668342" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33168316" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.17656766" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37313432" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21104388" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -764,7 +739,8 @@
     <MESSAGE value="Improve app design" />
     <MESSAGE value="Fix" />
     <MESSAGE value="add editor for files and fixe bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add editor for files and fixe bugs" />
+    <MESSAGE value="add choose type and choose directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="add choose type and choose directory" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -799,6 +775,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -942,8 +925,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="118" column="70" selection-start-line="118" selection-start-column="70" selection-end-line="118" selection-end-column="70" />
+        <state relative-caret-position="1819">
+          <caret line="125" column="70" selection-start-line="125" selection-start-column="70" selection-end-line="125" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -958,15 +941,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1581">
           <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="221">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#514#515#0" expanded="true" />
@@ -975,24 +955,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/main_window.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="179" column="3" selection-start-line="179" selection-start-column="3" selection-end-line="179" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="108" selection-start-line="2" selection-start-column="108" selection-end-line="2" selection-end-column="108" />
+        <state relative-caret-position="177">
+          <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1015,7 +991,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
