@@ -25,6 +25,7 @@ public class WindowForEditing implements Initializable {
 
   static {
     editWindowStage.initModality(Modality.APPLICATION_MODAL);
+    editWindowStage.setResizable(false);
   }
 
   @FXML

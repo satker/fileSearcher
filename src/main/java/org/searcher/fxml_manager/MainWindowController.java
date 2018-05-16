@@ -169,9 +169,9 @@ public class MainWindowController implements Initializable {
     AnchorPane rootLayout = loader.load();
     Scene editFileScene = new Scene(rootLayout);
     WindowForEditing editWindow = new WindowForEditing();
-    editWindow.editWindowStage.setTitle("Редактирование файла");
-    editWindow.editWindowStage.setScene(editFileScene);
-    editWindow.editWindowStage.show();
+    WindowForEditing.editWindowStage.setTitle("Редактирование файла");
+    WindowForEditing.editWindowStage.setScene(editFileScene);
+    WindowForEditing.editWindowStage.show();
   }
 
   private void enterTextToListViewIfTextPresent(int[] searchedStrings,

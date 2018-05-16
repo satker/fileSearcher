@@ -29,6 +29,7 @@ public class Main extends Application {
                                                                    .getResource(
                                                                        "main_window.fxml")));
     primaryStage.setTitle("Searcher");
+    primaryStage.setResizable(false);
     primaryStage.setScene(new Scene(root));
     primaryStage.show();
   }
