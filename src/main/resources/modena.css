@@ -6,13 +6,15 @@
 /* Redefine base colors */
 .root {
   -fx-base: rgb(50, 50, 50);
-  -fx-background: rgb(184, 186, 188);
+  -fx-background: rgba(220, 212, 255, 0.72);
+/ / rgb(184, 186, 188);
 
   /* make controls (buttons, thumb, etc.) slightly lighter */
   -fx-color: derive(-fx-base, 10%);
 
   /* text fields and table rows background */
-  -fx-control-inner-background: rgb(130, 169, 255);
+  -fx-control-inner-background: rgb(255, 255, 255);
+/ / rgb(130, 169, 255);
   /* version of -fx-control-inner-background for alternative rows */
   -fx-control-inner-background-alt: derive(-fx-control-inner-background, 2.5%);
 
@@ -23,7 +25,7 @@
 
   /* A bright blue for highlighting/accenting objects.  For example: selected
    * text; selected items in menus, lists, trees, and tables; progress bars */
-  -fx-accent: rgb(89, 158, 255);
+  -fx-accent: rgb(124, 108, 255);
 
   /* color of non-focused yet selected elements */
   -fx-selection-bar-non-focused: rgb(186, 186, 186);
