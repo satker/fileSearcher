@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 import org.searcher.Main;
 import org.searcher.controller.SearchFilesController;
 import org.searcher.model.SearchFilesModel;
@@ -42,9 +45,25 @@ import org.searcher.service.SearchFilesService;
 public class MainWindowController implements Initializable {
 
   public static volatile ObservableList<SearchFilesModel> resultFiles = FXCollections.observableArrayList();
-  //public static final Map<String, StringBuilder> fileWithText = new HashMap<>();
+
   public static final Map<String, List<String>> fileAndLines = new HashMap<>();
+
   public static Stage primaryStage;
+
+  public static String currentFilePath;
+
+  private static ObservableList textOpenFile = FXCollections.observableArrayList();
+
+  private Thread mainThread;
+
+  private SearchFilesController memFind;
+
+  private String[] textTypes = ("1ST ABW ACL AFP AMI ANS ASC AWW CCF CSV CWK DBK DITA DOC" +
+      " DOCM DOCX DOT DOTX EGT EPUB EZW FDX FTM FTX GDOC HTML HWP HWPML LOG LWP" +
+      " MBP MD ME MCW Mobi NB NBP NEIS ODM ODOC ODT OSHEET OTT OMM PAGES PAP PDAX" +
+      " PDF QUOX Radix-64RTF RPT SDW SE STW Sxw TeX INFO Troff TXT UOF UOML VIA" +
+      " WPD WPS WPT WRD WRF WRI XHTML XML XPS").toLowerCase()
+                                               .split(" ");
 
   @FXML
   private TableView<SearchFilesModel> resultFinder;
@@ -81,26 +100,27 @@ public class MainWindowController implements Initializable {
 
   @FXML
   private TextField findNameFile;
-  public static String currentFilePath;
-  private static ObservableList textOpenFile = FXCollections.observableArrayList();
 
-  private Thread mainThread;
-
-  private SearchFilesController memFind;
   @FXML
   private Button stopSearch;
+
   @FXML
   private Button editFile;
 
+  @FXML
+  private Button openFile;
 
-  public static void getWindow() {
+
+  static void getWindow() {
     primaryStage.show();
   }
 
   @FXML
   private void startFind() {
+    changeName.setText("");
     textOpenFile.clear();
     resultFiles.clear();
+
     memFind = new SearchFilesController(innerFinder.getText(),
         whatFindText.getText(),
         findType.getText(),
@@ -118,6 +138,37 @@ public class MainWindowController implements Initializable {
     }
   }
 
+  @FXML
+  private void openFile() {
+    Platform.runLater(() -> {
+      textOpenFile.clear();
+      getTextFromFile(currentFilePath);
+    });
+  }
+
+  @FXML
+  public void editFileOpenWindow() throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(Main.resource);
+    AnchorPane rootLayout = loader.load();
+    Scene editFileScene = new Scene(rootLayout);
+    WindowForEditing.editWindowStage.setTitle("Редактирование файла");
+    WindowForEditing.editWindowStage.setScene(editFileScene);
+    WindowForEditing.editWindowStage.show();
+  }
+
+  @FXML
+  private void chooseDirectory() {
+    DirectoryChooser directoryChooser = new DirectoryChooser();
+    directoryChooser.setTitle("Choose directory");
+    File defaultDirectory = new File("C:/");
+    directoryChooser.setInitialDirectory(defaultDirectory);
+    File selectedDirectory = directoryChooser.showDialog(primaryStage);
+    if (selectedDirectory != null) {
+      innerFinder.setText(selectedDirectory.getAbsolutePath());
+    }
+  }
+
   private void writeNameFileToLabelChangeName(TableRow<SearchFilesModel> row, MouseEvent event) {
     if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
         && event.getClickCount() == 1) {
@@ -128,15 +179,7 @@ public class MainWindowController implements Initializable {
     }
   }
 
-  @FXML
-  private void openFile() {
-    Platform.runLater(() -> {
-      textOpenFile.clear();
-      getTextFromFile(currentFilePath);
-    });
-  }
-
-  public void getTextFromFile(String str) {
+  private void getTextFromFile(String str) {
     try {
       int[] searchedStrings = memFind.getSearchedFiles()
                                      .get(str);
@@ -160,18 +203,6 @@ public class MainWindowController implements Initializable {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  @FXML
-  public void editFileOpenWindow() throws IOException {
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(Main.resource);
-    AnchorPane rootLayout = loader.load();
-    Scene editFileScene = new Scene(rootLayout);
-    WindowForEditing editWindow = new WindowForEditing();
-    WindowForEditing.editWindowStage.setTitle("Редактирование файла");
-    WindowForEditing.editWindowStage.setScene(editFileScene);
-    WindowForEditing.editWindowStage.show();
   }
 
   private void enterTextToListViewIfTextPresent(int[] searchedStrings,
@@ -200,6 +231,8 @@ public class MainWindowController implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
+    TextFields.bindAutoCompletion(findType, textTypes);
+
     stopSearch.setDisable(true);
 
     initializeSearchingResultRow();
@@ -226,11 +259,11 @@ public class MainWindowController implements Initializable {
     resultFinder.setRowFactory(tv -> {
       TableRow<SearchFilesModel> row = new TableRow<>();
       row.setOnMouseClicked(event -> {
-        if (event.getClickCount() == 2) {
-          openFile();
-        } else {
-          writeNameFileToLabelChangeName(row, event);
-        }
+        //        if (event.getClickCount() == 2) {
+        //          openFile();
+        //        } else {
+        writeNameFileToLabelChangeName(row, event);
+        //}
       });
       return row;
     });
@@ -246,10 +279,11 @@ public class MainWindowController implements Initializable {
           e.printStackTrace();
         }
         checkDisableOrEnableElements(count);
-        if (changeName.getText()
-                      .equals("")) {
+        if (isaTextTypeOfFIle()) {
           editFile.setDisable(true);
+          openFile.setDisable(true);
         } else {
+          openFile.setDisable(false);
           editFile.setDisable(false);
         }
         count[0]++;
@@ -257,6 +291,15 @@ public class MainWindowController implements Initializable {
     });
     listenerThread.setDaemon(true);
     listenerThread.start();
+  }
+
+  private boolean isaTextTypeOfFIle() {
+    return changeName.getText()
+                     .equals("") || Arrays.stream(textTypes)
+                                          .noneMatch(
+                                              type -> SearchFilesService.isFileTypeGood(
+                                                  changeName.getText(),
+                                                  type.toLowerCase()));
   }
 
   private void checkDisableOrEnableElements(int[] count) {

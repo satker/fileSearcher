@@ -16,11 +16,15 @@ import org.searcher.model.SearchFilesModel;
 public class SearchFilesService {
 
   private String directory; // Искомая директория
+
   private String findText; // Искомый текст
+
   private String findType; // Искомое расширение
+
   private String findNameFile;
 
   private int id = 1; // ID результата
+
   private String chooseSearchType;
 
   private Map<String, int[]> searchedFiles = new HashMap<>();
@@ -110,32 +114,32 @@ public class SearchFilesService {
     return resultFullName;
   }
 
+  // Проверка расширения
+  public static boolean isFileTypeGood(String fileName, String findType) {
+    return Pattern.compile(".+\\." + findType + "$")
+                  .matcher(fileName)
+                  .matches();
+  }
+
   private boolean isaGoodFileAtAll(File file) {
-    return file.canRead() && (findType.equals("") || isFileTypeGood(file.getName())) &&
+    return file.canRead() && (findType.equals("") || isFileTypeGood(file.getName(), findType)) &&
         (findText.equals("") || isFileContainCurrentText(file)) && (findNameFile.equals("")
         || isFileNameGood(file.getName()));
   }
 
   private boolean isFileNameGood(String nameFile) {
-    String nameWithoutType = nameFile.split("\\.(?=[^\\.]+$)")[0];
+    String nameWithoutType = nameFile.split("\\.(?=[^.]+$)")[0];
     return nameWithoutType.equals(findNameFile);
-  }
-
-  // Проверка расширения
-  private boolean isFileTypeGood(String nameFile) {
-    return Pattern.compile(".+\\." + findType + "$")
-                  .matcher(nameFile)
-                  .matches();
   }
 
   // Проверка наличия искомого текста в файле
   private boolean isFileContainCurrentText(File file) {
     boolean isFuzzy = chooseSearchType.equals("Fuzzy search");
     try {
-      int[] findIndexesWithSearchedSrtings = LuceneSearcherService.isaTextInFile(file, findText,
+      int[] findIndexesWithSearchedStrings = LuceneSearcherService.isaTextInFile(file, findText,
           isFuzzy);
-      searchedFiles.put(file.getAbsolutePath(), findIndexesWithSearchedSrtings);
-      return findIndexesWithSearchedSrtings.length != 0;
+      searchedFiles.put(file.getAbsolutePath(), findIndexesWithSearchedStrings);
+      return findIndexesWithSearchedStrings.length != 0;
     } catch (Exception e) {
       return false;
     }
