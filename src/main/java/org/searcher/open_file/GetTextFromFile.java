@@ -8,10 +8,14 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.rtf.RTFEditorKit;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -19,6 +23,10 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.searcher.service.SearchFilesService;
 
 public class GetTextFromFile {
+
+  private GetTextFromFile() {
+    throw new IllegalStateException("Utility class");
+  }
 
   public static List<String> getTextFromFile(String filePath) throws IOException {
     List<String> result = new ArrayList<>();
@@ -29,6 +37,8 @@ public class GetTextFromFile {
         getLinesCurrentFileDocX(filePath, result);
       } else if (SearchFilesService.isFileTypeGood(filePath, "rtf")) {
         getLinesCurrentFileRtf(filePath, result);
+      } else if (SearchFilesService.isFileTypeGood(filePath, "pdf")) {
+        getLinesCurrentFilePdf(filePath, result);
       } else {
         getLinesCurrentFileTxt(filePath, result);
       }
@@ -39,6 +49,22 @@ public class GetTextFromFile {
     return result;
   }
 
+  private static void getLinesCurrentFilePdf(String filePath, List<String> result)
+      throws IOException {
+    try (PDDocument document = PDDocument.load(new File(filePath))) {
+      document.getClass();
+      if (!document.isEncrypted()) {
+        PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+        stripper.setSortByPosition(true);
+        PDFTextStripper tStripper = new PDFTextStripper();
+        String pdfFileInText = tStripper.getText(document);
+        // split by whitespace
+        String[] lines = pdfFileInText.split("\\r?\\n");
+        result.addAll(Arrays.asList(lines));
+      }
+    }
+  }
+
   private static void getLinesCurrentFileRtf(String filePath, List<String> result)
       throws IOException {
     FileInputStream stream = new FileInputStream(filePath);
@@ -46,10 +72,6 @@ public class GetTextFromFile {
     Document doc = kit.createDefaultDocument();
     try {
       kit.read(stream, doc, 0);
-    } catch (BadLocationException e) {
-      e.printStackTrace();
-    }
-    try {
       result.add(doc.getText(0, doc.getLength()));
     } catch (BadLocationException e) {
       e.printStackTrace();
@@ -83,6 +105,6 @@ public class GetTextFromFile {
   }
 
   private static void getLinesCurrentFileTxt(String str, List<String> result) throws IOException {
-    result.addAll(readAllLines(Paths.get(str), Charset.forName("ISO-8859-1")));
+    result.addAll(readAllLines(Paths.get(str), Charset.forName("UTF-8")));
   }
 }
