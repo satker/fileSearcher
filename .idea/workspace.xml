@@ -7,10 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="237706dd-3125-464a-b6cc-c28cb359eb59" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_pdfbox_pdfbox_2_0_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fileSearcher.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fileSearcher.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/searcher/open_file/GetTextFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/searcher/open_file/GetTextFromFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/searcher/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/searcher/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/modena.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/modena.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +29,7 @@
       <file leaf-file-name="GetTextFromFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/open_file/GetTextFromFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-462">
+            <state relative-caret-position="289">
               <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,8 +43,8 @@
       <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="425">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -48,10 +52,10 @@
       <file leaf-file-name="LuceneSearcherService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/LuceneSearcherService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="51">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1527021404264" expanded="true" signature="752:1323" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -60,20 +64,17 @@
       <file leaf-file-name="SearchFilesService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+            <state relative-caret-position="2125">
+              <caret line="145" column="3" selection-start-line="145" selection-start-column="3" selection-end-line="145" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="853">
-              <caret line="302" column="32" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1833">
+              <caret line="350" column="1" selection-start-line="350" selection-start-column="1" selection-end-line="350" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -81,8 +82,11 @@
       <file leaf-file-name="Searcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/lucene/Searcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+              <folding>
+                <marker date="1527021404268" expanded="true" signature="2824:2827" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +94,23 @@
       <file leaf-file-name="WindowForEditing.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="210">
+              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,15 +118,8 @@
       <file leaf-file-name="SearchFilesController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/controller/SearchFilesController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
-                <element signature="e#1143#1144#0" expanded="true" />
-                <element signature="e#1194#1195#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="408">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -117,15 +129,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchFilesModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/model/SearchFilesModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -195,18 +198,18 @@
         <option value="$PROJECT_DIR$/src/main/java/fxml_manager/WindowForEditing.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/fxml_manager/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/searcher/Main.java" />
         <option value="$PROJECT_DIR$/.idea/compiler.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/service/LuceneSearcherService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/modena.css" />
         <option value="$PROJECT_DIR$/src/main/resources/window_for_editing.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/model/SearchFilesModel.java" />
         <option value="$PROJECT_DIR$/src/main/resources/main_window.fxml" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/org/searcher/open_file/GetTextFromFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/searcher/Main.java" />
       </list>
     </option>
   </component>
@@ -222,11 +225,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="604" />
-    <option name="y" value="41" />
-    <option name="width" value="728" />
-    <option name="height" value="735" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="603" />
+    <option name="y" value="40" />
+    <option name="width" value="730" />
+    <option name="height" value="737" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -236,6 +239,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -260,90 +265,16 @@
               <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml_manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="open_file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="searcher" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="lucene" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fileSearcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fileSearcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,25 +285,25 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/poi-3.0-FINAL.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/controlsfx-9.0.0.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\java_projects\fileSearcher\src\main\resources" />
-      <recent name="D:\java_projects\fileSearcher\src\main\java" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Documents\GitHub\fileSearcher\src\main\resources" />
       <recent name="D:\java_projects\fileSearcher\src\main\java\org\searcher" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\java_projects\fileSearcher\src\main\resources" />
+      <recent name="D:\java_projects\fileSearcher\src\main\java" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -487,19 +418,6 @@
       <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list>
       <item itemvalue="Application.MainWindowController" />
@@ -714,38 +632,38 @@
     <option name="totallyTimeSpent" value="128309000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3269781" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19636963" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19542421" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19742814" />
-      <window_info anchor="bottom" id="SonarLint" order="8" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20139535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39933994" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39847472" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="SonarLint" order="8" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -846,13 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -926,63 +837,34 @@
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/controlsfx/controlsfx/9.0.0/controlsfx-9.0.0.jar!/org/controlsfx/control/textfield/TextFields.class" />
     <entry file="jar://$USER_HOME$/.ideaLibSources/controlsfx-9.0.0-sources.jar!/org/controlsfx/control/textfield/TextFields.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/nio/file/Files.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53023">
-          <caret line="3200" column="31" selection-start-line="3200" selection-start-column="31" selection-end-line="3200" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/nio/file/Files.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/String.java" />
     <entry file="jar://$PROJECT_DIR$/lib/poi-3.0-FINAL-sources.jar!/org/apache/poi/POIDocument.java" />
-    <entry file="jar://$PROJECT_DIR$/lib/poi-3.17-sources.jar!/org/apache/poi/POIDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6885">
-          <caret line="458" column="26" selection-start-line="458" selection-start-column="22" selection-end-line="458" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="27" column="39" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/poi-3.17-sources.jar!/org/apache/poi/POIDocument.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/model/SearchFilesModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="580">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/LuceneSearcherService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="51">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1527021404264" expanded="true" signature="752:1323" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/lucene/Searcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <marker date="1527021404268" expanded="true" signature="2824:2827" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -995,14 +877,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/open_file/GetTextFromFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
+        <state relative-caret-position="289">
           <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1014,29 +896,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/controller/SearchFilesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/service/SearchFilesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
+        <state relative-caret-position="2125">
+          <caret line="145" column="3" selection-start-line="145" selection-start-column="3" selection-end-line="145" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/WindowForEditing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/fxml_manager/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="853">
-          <caret line="302" column="32" selection-start-line="302" selection-start-column="32" selection-end-line="302" selection-end-column="32" />
+        <state relative-caret-position="1833">
+          <caret line="350" column="1" selection-start-line="350" selection-start-column="1" selection-end-line="350" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/searcher/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1062,7 +954,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1086,7 +978,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>9.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1103,7 +995,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1123,7 +1014,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.apache.pdfbox:pdfbox:2.0.6</last-edited>
+          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

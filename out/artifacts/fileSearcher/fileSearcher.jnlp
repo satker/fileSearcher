@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="fileSearcher.jnlp">
+    <information>
+        <title>Main</title>
+        <vendor>Unknown</vendor>
+        <description>Main</description>
+        <offline-allowed/>
+    </information>
+    <update check="background"/>
+    <resources>
+        <j2se version="9.0.4+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="commons-codec-1.10-sources.jar" size="301032" download="eager"/>
+        <jar href="commons-codec-1.10.jar" size="284184" download="eager"/>
+        <jar href="commons-collections4-4.1-sources.jar" size="701388" download="eager"/>
+        <jar href="commons-collections4-4.1.jar" size="751238" download="eager"/>
+        <jar href="commons-logging-1.2.jar" size="61829" download="eager"/>
+        <jar href="controlsfx-8.40.14.jar" size="1215643" download="eager"/>
+        <jar href="curvesapi-1.04-sources.jar" size="201324" download="eager"/>
+        <jar href="curvesapi-1.04.jar" size="98365" download="eager"/>
+        <jar href="fileSearcher.jar" size="61772" download="eager"/>
+        <jar href="fontbox-2.0.6.jar" size="1478907" download="eager"/>
+        <jar href="lib\commons-codec-1.10-sources.jar" size="301032" download="eager"/>
+        <jar href="lib\commons-codec-1.10.jar" size="284184" download="eager"/>
+        <jar href="lib\commons-collections4-4.1-sources.jar" size="701388" download="eager"/>
+        <jar href="lib\commons-collections4-4.1.jar" size="751238" download="eager"/>
+        <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager"/>
+        <jar href="lib\controlsfx-8.40.14.jar" size="1215643" download="eager"/>
+        <jar href="lib\curvesapi-1.04-sources.jar" size="201324" download="eager"/>
+        <jar href="lib\curvesapi-1.04.jar" size="98365" download="eager"/>
+        <jar href="lib\fontbox-2.0.6.jar" size="1478907" download="eager"/>
+        <jar href="lib\lucene-analyzers-common-7.2.0.jar" size="1621935" download="eager"/>
+        <jar href="lib\lucene-core-7.2.0.jar" size="2792322" download="eager"/>
+        <jar href="lib\lucene-queryparser-7.2.0.jar" size="384682" download="eager"/>
+        <jar href="lib\pdfbox-2.0.6.jar" size="2467394" download="eager"/>
+        <jar href="lib\poi-3.17-sources.jar" size="2374854" download="eager"/>
+        <jar href="lib\poi-3.17.jar" size="2701171" download="eager"/>
+        <jar href="lib\poi-ooxml-3.17-sources.jar" size="1047127" download="eager"/>
+        <jar href="lib\poi-ooxml-3.17.jar" size="1479023" download="eager"/>
+        <jar href="lib\poi-ooxml-schemas-3.17.jar" size="5924600" download="eager"/>
+        <jar href="lib\poi-scratchpad-3.17.jar" size="1390360" download="eager"/>
+        <jar href="lib\stax-api-1.0.1.jar" size="26514" download="eager"/>
+        <jar href="lib\xmlbeans-2.6.0.jar" size="2730866" download="eager"/>
+        <jar href="lucene-analyzers-common-7.2.0.jar" size="1621935" download="eager"/>
+        <jar href="lucene-core-7.2.0.jar" size="2792322" download="eager"/>
+        <jar href="lucene-queryparser-7.2.0.jar" size="384682" download="eager"/>
+        <jar href="pdfbox-2.0.6.jar" size="2467394" download="eager"/>
+        <jar href="poi-3.17-sources.jar" size="2374854" download="eager"/>
+        <jar href="poi-3.17.jar" size="2701171" download="eager"/>
+        <jar href="poi-ooxml-3.17-sources.jar" size="1047127" download="eager"/>
+        <jar href="poi-ooxml-3.17.jar" size="1479023" download="eager"/>
+        <jar href="poi-ooxml-schemas-3.17.jar" size="5924600" download="eager"/>
+        <jar href="poi-scratchpad-3.17.jar" size="1390360" download="eager"/>
+        <jar href="stax-api-1.0.1.jar" size="26514" download="eager"/>
+        <jar href="xmlbeans-2.6.0.jar" size="2730866" download="eager"/>
+    </resources>
+    <jfx:javafx-desc width="600" height="400" main-class="org.searcher.Main" name="Main"/>
+</jnlp>
+

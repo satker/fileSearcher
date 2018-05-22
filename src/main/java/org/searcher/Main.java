@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.searcher.fxml_manager.MainWindowController;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 
@@ -29,6 +30,7 @@ public class Main extends Application {
                                                                    .getResource(
                                                                        "main_window.fxml")));
     primaryStage.setTitle("Searcher");
+    primaryStage.getIcons().add(new Image("/icon_docs.png"));
     primaryStage.setResizable(false);
     primaryStage.setScene(new Scene(root));
     primaryStage.show();

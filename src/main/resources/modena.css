@@ -5,16 +5,16 @@
 
 /* Redefine base colors */
 .root {
-  -fx-base: rgb(50, 50, 50);
-  -fx-background: rgba(220, 212, 255, 0.72);
+  -fx-base: rgb(255, 61, 0);
+  -fx-background: rgb(255, 255, 255, 255);
 
   /* make controls (buttons, thumb, etc.) slightly lighter */
-  -fx-color: derive(-fx-base, 10%);
+  -fx-color: rgb(40, 85, 147); /*  -fx-color: derive(-fx-base, 10%);*/
 
   /* text fields and table rows background */
-  -fx-control-inner-background: rgb(255, 255, 255);
+  -fx-control-inner-background: rgb(92, 107, 192);
   /* version of -fx-control-inner-background for alternative rows */
-  -fx-control-inner-background-alt: derive(-fx-control-inner-background, 2.5%);
+  -fx-control-inner-background-alt: derive(-fx-control-inner-background, 20.5%);
 
   /* text colors depending on background's brightness */
   -fx-light-text-color: rgb(255, 255, 255);
@@ -23,7 +23,7 @@
 
   /* A bright blue for highlighting/accenting objects.  For example: selected
    * text; selected items in menus, lists, trees, and tables; progress bars */
-  -fx-accent: rgb(124, 108, 255);
+  -fx-accent: rgb(255, 138, 101); /*rgb(124, 108, 255)*/
 
   /* color of non-focused yet selected elements */
   -fx-selection-bar-non-focused: rgb(186, 186, 186);
@@ -39,18 +39,22 @@
   -fx-prompt-text-fill: transparent;
 }
 
+.scroll-bar {
+  -fx-background-color: rgb(255, 154, 122);
+}
+
 /* Fix scroll bar buttons arrows colors */
 .scroll-bar > .increment-button > .increment-arrow,
 .scroll-bar > .decrement-button > .decrement-arrow {
-  -fx-background-color: -fx-mark-highlight-color, rgb(220, 220, 220);
+  -fx-background-color: -fx-mark-highlight-color, rgb(40, 85, 147);/*rgb(220, 220, 220);*/
 }
 
 .scroll-bar > .increment-button:hover > .increment-arrow,
 .scroll-bar > .decrement-button:hover > .decrement-arrow {
-  -fx-background-color: -fx-mark-highlight-color, rgb(240, 240, 240);
+  -fx-background-color: -fx-mark-highlight-color, rgb(25, 78, 150);/*rgb(240, 240, 240);*/
 }
 
 .scroll-bar > .increment-button:pressed > .increment-arrow,
 .scroll-bar > .decrement-button:pressed > .decrement-arrow {
-  -fx-background-color: -fx-mark-highlight-color, rgb(255, 255, 255);
+  -fx-background-color: -fx-mark-highlight-color, rgb(0, 63, 150);/*rgb(255, 255, 255);*/
 }

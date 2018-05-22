@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.searcher.open_file.GetTextFromFile;
@@ -24,6 +25,7 @@ public class WindowForEditing implements Initializable {
   static {
     editWindowStage.initModality(Modality.APPLICATION_MODAL);
     editWindowStage.setResizable(false);
+    editWindowStage.getIcons().add(new Image("/icon_docs.png"));
   }
 
   @FXML
