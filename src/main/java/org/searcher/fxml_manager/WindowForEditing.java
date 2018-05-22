@@ -1,12 +1,8 @@
 package org.searcher.fxml_manager;
 
-import static java.nio.file.Files.readAllLines;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -15,12 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.searcher.open_file.GetTextFromFile;
 
 public class WindowForEditing implements Initializable {
 
-  public static final WindowForEditing editWindow = new WindowForEditing();
   public static final Stage editWindowStage = new Stage();
+
   public static List<String> linesCurrentFile = new ArrayList<>();
+
   public String filePath;
 
   static {
@@ -69,8 +67,7 @@ public class WindowForEditing implements Initializable {
           linesCurrentFile = MainWindowController.fileAndLines.get(
               filePath);
         } else {
-          linesCurrentFile = readAllLines(Paths.get(filePath),
-              Charset.forName("ISO-8859-1"));
+          linesCurrentFile = GetTextFromFile.getTextFromFile(filePath);
         }
       } catch (IOException e) {
         e.printStackTrace();

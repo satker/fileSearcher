@@ -1,19 +1,15 @@
 package org.searcher.service;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.searcher.fxml_manager.MainWindowController;
+import org.searcher.open_file.GetTextFromFile;
 import org.searcher.service.lucene.FileIndexer;
 import org.searcher.service.lucene.FileToDocument;
 import org.searcher.service.lucene.Searcher;
-
-import java.io.File;
-import java.nio.charset.Charset;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.nio.file.Files.readAllLines;
 
 class LuceneSearcherService {
 
@@ -22,8 +18,7 @@ class LuceneSearcherService {
     FileIndexer fileIndexer = new FileIndexer();
 
     List<Document> documents = new ArrayList<>();
-    List<String> lines = readAllLines(Paths.get(file.getAbsolutePath()),
-        Charset.forName("ISO-8859-1"));
+    List<String> lines = GetTextFromFile.getTextFromFile(file.getAbsolutePath());
 
     int count = 0;
     for (String line : lines) {

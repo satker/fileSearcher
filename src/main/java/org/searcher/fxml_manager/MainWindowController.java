@@ -42,19 +42,27 @@ import org.searcher.service.SearchFilesService;
 public class MainWindowController implements Initializable {
 
   public static final Map<String, List<String>> fileAndLines = new HashMap<>();
+
   public static final String[] TEXT_TYPES = (
-      "1ST ABW ACL AFP AMI ANS ASC AWW CCF CSV CWK DBK DITA DOC" +
+      "RTF 1ST ABW ACL AFP AMI ANS ASC AWW CCF CSV CWK DBK DITA DOC" +
           " DOCM DOCX DOT DOTX EGT EPUB EZW FDX FTM FTX GDOC HTML HWP HWPML LOG LWP" +
           " MBP MD ME MCW Mobi NB NBP NEIS ODM ODOC ODT OSHEET OTT OMM PAGES PAP PDAX" +
           " PDF QUOX Radix-64RTF RPT SDW SE STW Sxw TeX INFO Troff TXT UOF UOML VIA" +
           " WPD WPS WPT WRD WRF WRI XHTML XML XPS").toLowerCase()
                                                    .split(" ");
+
   public static volatile ObservableList<SearchFilesModel> resultFiles = FXCollections.observableArrayList();
+
   public static Stage primaryStage;
+
   public static String currentFilePath;
+
   private static ObservableList textOpenFile = FXCollections.observableArrayList();
+
   private Thread mainThread;
+
   private SearchFilesController memFind;
+
   @FXML
   private TableView<SearchFilesModel> resultFinder;
 
@@ -317,7 +325,6 @@ public class MainWindowController implements Initializable {
       stopSearch.setDisable(false);
       progressSearching.setProgress(-1);
       progressSearching.setVisible(true);
-      //innerFinder.setDisable(true);
       findType.setDisable(true);
       whatFindText.setDisable(true);
       chooseDirectory.setDisable(true);
@@ -333,7 +340,6 @@ public class MainWindowController implements Initializable {
       stopSearch.setDisable(true);
       progressSearching.setVisible(false);
       progressSearching.setProgress(0);
-      //innerFinder.setDisable(false);
       findType.setDisable(false);
       chooseDirectory.setDisable(false);
       whatFindText.setDisable(false);
