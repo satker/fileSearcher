@@ -149,24 +149,27 @@ public class MainWindowController implements Initializable {
   }
 
   @FXML
-  public void editFileOpenWindow() {
+  public void editFileOpenWindow() throws IOException {
     try {
-      Desktop.getDesktop()
-             .edit(new File(currentFilePath));
-    } catch (IOException e) {
-      FXMLLoader loader = new FXMLLoader();
-      loader.setLocation(Main.resource);
-      AnchorPane rootLayout = null;
-      try {
-        rootLayout = loader.load();
-      } catch (IOException e1) {
-        e1.printStackTrace();
+      if (SearchFilesService.isFileTypeGood(currentFilePath, "xml")) {
+        showWindowForEdit();
+      } else {
+        Desktop.getDesktop()
+               .edit(new File(currentFilePath));
       }
-      Scene editFileScene = new Scene(rootLayout);
-      WindowForEditing.editWindowStage.setTitle("Редактирование файла");
-      WindowForEditing.editWindowStage.setScene(editFileScene);
-      WindowForEditing.editWindowStage.show();
+    } catch (IOException e) {
+      showWindowForEdit();
     }
+  }
+
+  private void showWindowForEdit() throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(Main.resource);
+    AnchorPane rootLayout = loader.load();
+    Scene editFileScene = new Scene(rootLayout);
+    WindowForEditing.editWindowStage.setTitle("Редактирование файла");
+    WindowForEditing.editWindowStage.setScene(editFileScene);
+    WindowForEditing.editWindowStage.show();
   }
 
   @FXML
