@@ -1,5 +1,6 @@
 package org.searcher.fxml_manager;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -55,7 +56,7 @@ public class MainWindowController implements Initializable {
 
   public static Stage primaryStage;
 
-  public static String currentFilePath;
+  static String currentFilePath;
 
   private static ObservableList textOpenFile = FXCollections.observableArrayList();
 
@@ -148,14 +149,24 @@ public class MainWindowController implements Initializable {
   }
 
   @FXML
-  public void editFileOpenWindow() throws IOException {
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(Main.resource);
-    AnchorPane rootLayout = loader.load();
-    Scene editFileScene = new Scene(rootLayout);
-    WindowForEditing.editWindowStage.setTitle("Редактирование файла");
-    WindowForEditing.editWindowStage.setScene(editFileScene);
-    WindowForEditing.editWindowStage.show();
+  public void editFileOpenWindow() {
+    try {
+      Desktop.getDesktop()
+             .edit(new File(currentFilePath));
+    } catch (IOException e) {
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(Main.resource);
+      AnchorPane rootLayout = null;
+      try {
+        rootLayout = loader.load();
+      } catch (IOException e1) {
+        e1.printStackTrace();
+      }
+      Scene editFileScene = new Scene(rootLayout);
+      WindowForEditing.editWindowStage.setTitle("Редактирование файла");
+      WindowForEditing.editWindowStage.setScene(editFileScene);
+      WindowForEditing.editWindowStage.show();
+    }
   }
 
   @FXML

@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="fileSearcher">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-ooxml-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/fontbox-2.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/controlsfx-8.40.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-scratchpad-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/curvesapi-1.04.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-3.17-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-ooxml-schemas-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/commons-codec-1.10-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/fileSearcher.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/pdfbox-2.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/poi-ooxml-3.17-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/curvesapi-1.04-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/commons-collections4-4.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/lucene-core-7.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/stax-api-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/lucene-analyzers-common-7.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/lucene-queryparser-7.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/fileSearcher/commons-collections4-4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
