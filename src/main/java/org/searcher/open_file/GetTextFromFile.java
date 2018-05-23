@@ -45,6 +45,8 @@ public class GetTextFromFile {
     } catch (IllegalArgumentException e) {
       // выбрасывает IllegalArgumentException если rtf замаскирован под doc, поэтому открываем как rtf
       getLinesCurrentFileRtf(filePath, result);
+    } catch (Exception e) {
+      return result;
     }
     return result;
   }
